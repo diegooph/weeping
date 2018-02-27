@@ -1,4 +1,4 @@
-package br.com.test;
+package br.com.testLixos;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
