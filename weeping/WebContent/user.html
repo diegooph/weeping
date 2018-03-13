@@ -21,9 +21,8 @@
 <!--Main Navigation-->
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <img src="https://i.imgur.com/ZOsu7h2.png" class="img-responsive" alt=""/>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
+        <img src="https://i.imgur.com/ZOsu7h2.png" class="img-responsive" alt="" />
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -31,19 +30,16 @@
                     <a class="nav-link" href="index">Inicio <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Weep's<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="3">Weep's<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto nav-flex-icons">
 
                 <li class="nav-item avatar dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-5" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <img src="http://www.torneodj.com/files/avatar/2_120.jpg" class="rounded z-depth-4" width="35"
-                             height="30">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="http://www.torneodj.com/files/avatar/2_120.jpg" class="rounded z-depth-4" width="35" height="30">
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-purple"
-                         aria-labelledby="navbarDropdownMenuLink-5">
+                    <div class="dropdown-menu dropdown-menu-right dropdown-purple" aria-labelledby="navbarDropdownMenuLink-5">
                         <a class="dropdown-item whov" href="#"><i class="fa fa-plus"></i> Login</a>
                         <a class="dropdown-item whov" href="#"><i class="fa fa-edit"></i> Cadastrar</a>
                     </div>
@@ -52,20 +48,25 @@
         </div>
     </nav>
 </header>
+
+
 <br>
 <div class="py-2"></div>
 <div class="container-fluid">
+
     <div class="row">
         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-12 col-xs-12">
         </div>
+
         <!-- Aqui fica o perfil do usuario -->
+
         <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-xs-12">
+            <hr>
             <div class="row">
                 <div class="col-12">
                     <ul class="list-group">
                         <div class="card hovercardp">
                             <div class="cardheaderp">
-
                             </div>
                             <div class="avatar">
                                 <img src="https://www.apple.com/autopush/br/itunes/charts/albums/images/2018/2/dea8d49db75e17e9a3045bbeb1e07cb0a4e6fbb040a10cf2e2a44239c66a8947.jpg">
@@ -84,7 +85,7 @@
                                 </div>
                                 <p>Texto, Texto, Texto, Texto, Texto, Texto, Texto</p>
                             </div>
-
+                            <hr>
                             <div class="infop">
                                 <div class="titlep">
                                     <a target="_blank" href="">Amigos em destaque</a>
@@ -96,43 +97,33 @@
                 </div>
             </div>
         </div>
-        <!-- Aqui termina o perfil do usuario -->
 
+        <!-- Aqui termina o perfil do usuario -->
         <!-- Aqui inicia a area de postagem -->
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <hr>
             <div class="row">
-                <div class="col-12 ">
-                    <ul class="list-group">
+                <div class="col-12">
 
-                        <li class="list-group-item" id="texto-principal">
-                            <textarea class="form-control textoprincipal alinhamentoDeTexto" id="textoprincipal"
-                                      placeholder="Você pode mostrar ao mundo sua raiva, concentre-a toda aqui!"
-                                      cols="30" rows="5" maxlength="300"></textarea>
-                            <hr>
-                            <i class="textoPequeno" id="referencia">...</i>
-                            <i class="textoPequeno textoNaDireita"><span id="caracteres">0</span>/300</i>
-                        </li>
-                        <li>
-                            <button class="buttonPost" style="vertical-align:middle" onclick="limite()">
-                                <span>Chorar </span></button>
-                            <button class="buttonCancel" style="vertical-align:middle" onclick="limpar()">
-                                <span>Desisistir </span></button>
-                        </li>
-                    </ul>
-                    <br>
                     <ul class="list-group">
                         <br>
 
-                        <li class="list-group-item" id="texto-PostPrincipal">
+                        <li class="list-group-item" id="texto-principal">
                             Aqui sera postado o texto dinamico (Checar no codigo)
                         </li>
-
+                        <li>
+                            <input type="submit" class="chorar" value="Chorar">
+                            <input type="submit" class="chorar" value=" ">
+                            <input type="submit" class="chorar" value="Limpar">
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
+
         <!-- Aqui termina a area de postagem -->
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <hr>
             <!-- Aqui pode por algum conteudo, mas por hora só usarei para separar as bordas -->
         </div>
     </div>
