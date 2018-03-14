@@ -1,20 +1,25 @@
 package br.com.exemploBanco.entity;
 
 import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.jboss.resteasy.spi.touri.MappedBy;
 
 @Entity
 public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-
 	private Integer idUsuario;
+
 	private String nome;
-	private Date dataNacimento;
+
+private Date dataNacimento;
 
 	public Integer getIdUsuario() {
 		return idUsuario;

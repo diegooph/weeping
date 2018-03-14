@@ -3,17 +3,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 
 @Entity
 public abstract class Mensagem {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-
 	private Integer idMensagem;
 	private Usuario usuarioRemetente;
 	private String mensagem;
-	private Integer likes;
+	private Integer likes; // Sera criado uma tabela para conter os registros do likes , e assim implementar casos de uso 
 
 	public Integer getIdMensagem() {
 		return idMensagem;
