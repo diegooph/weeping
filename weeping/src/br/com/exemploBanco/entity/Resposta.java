@@ -1,32 +1,26 @@
 package br.com.exemploBanco.entity;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
+@DiscriminatorValue(value="R")
 public class Resposta extends Mensagem {
+	@JoinColumn(name="id_mensagem_abordada"  )
+	@ManyToOne
+	private Mensagem mensagemAbordada;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-
-	private Integer idResposta;
-	private Mensagem mensagemAbortada;
-
-	public Integer getIdResposta() {
-		return idResposta;
-	}
-
-	public void setIdResposta(Integer idResposta) {
-		this.idResposta = idResposta;
-	}
 
 	public Mensagem getMensagemVinculada() {
-		return mensagemAbortada;
+		return mensagemAbordada;
 	}
 
 	public void setMensagemVinculada(Mensagem mensagemVinculada) {
-		this.mensagemAbortada = mensagemVinculada;
+		this.mensagemAbordada = mensagemVinculada;
 	}
 
 

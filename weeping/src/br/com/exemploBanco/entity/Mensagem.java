@@ -1,18 +1,32 @@
 package br.com.exemploBanco.entity;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
 
 
 
 @Entity
-public abstract class Mensagem {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="fl_tipo_mensagem", discriminatorType=DiscriminatorType.CHAR)
+@DiscriminatorValue(value="M")
+public class Mensagem {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idMensagem;
+	@JoinColumn(name="id_usuario_remetente" )
+	@ManyToOne
 	private Usuario usuarioRemetente;
+	
 	private String mensagem;
 	private Integer likes; // Sera criado uma tabela para conter os registros do likes , e assim implementar casos de uso 
 
