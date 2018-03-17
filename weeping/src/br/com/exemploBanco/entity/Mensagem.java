@@ -15,9 +15,9 @@ import javax.persistence.MappedSuperclass;
 
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="fl_tipo_mensagem", discriminatorType=DiscriminatorType.CHAR)
-@DiscriminatorValue(value="M")
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(name="fl_tipo_mensagem", discriminatorType=DiscriminatorType.CHAR)
+//@DiscriminatorValue(value="M")
 public class Mensagem {
 
 	@Id
