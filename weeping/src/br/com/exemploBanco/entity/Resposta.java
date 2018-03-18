@@ -17,7 +17,8 @@ public class Resposta  {
 	private Integer idResposta;
 	
 	
-	@JoinColumn(name = "id_mensagem_abordada")
+	
+	@JoinColumn(name = "id_mensagem_abordada", referencedColumnName = "idMensagem")
 	@ManyToOne
 	private Mensagem mensagemAbordada;
 	

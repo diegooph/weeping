@@ -1,8 +1,11 @@
 package br.com.exemploBanco.entity;
+import java.util.Collection;
+
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +14,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 
 
 
@@ -23,9 +27,15 @@ public class Mensagem {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idMensagem;
-	@JoinColumn(name="id_usuario_remetente" )
+	
+	
 	@ManyToOne
+	@JoinColumn(name="id_usuario_remetente" )
 	private Usuario usuarioRemetente;
+	
+	@OneToMany(mappedBy= "idResposta" ,  fetch= FetchType.LAZY)
+	private Collection<Resposta> resposta;
+	
 	
 	private String mensagem;
 	private Integer likes; // Sera criado uma tabela para conter os registros do likes , e assim implementar casos de uso 
