@@ -12,22 +12,22 @@ import br.com.exemploBanco.entity.Mensagem;
 public class MensagemService {
 
 	@PersistenceContext
-	private EntityManager em;
+	private EntityManager emm;
 
 	public Collection<Mensagem> getMensagems() {
 
-		Collection<Mensagem> resultList = em.createQuery("SELECT m from mensagem m", Mensagem.class).getResultList();
+		Collection<Mensagem> resultList = emm.createQuery("SELECT m from mensagem m", Mensagem.class).getResultList();
 		return resultList;
 	}
 
 	public void persist(Mensagem mensagem) {
 		
-		em.persist(mensagem);
+		emm.persist(mensagem);
 	}
 
 	public void remove(int id) {
 
-		em.remove(em.find(Mensagem.class, id));
+		emm.remove(emm.find(Mensagem.class, id));
 	}
 
 }

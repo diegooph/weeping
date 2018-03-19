@@ -30,8 +30,14 @@ public class MensagenController extends HttpServlet {
 
 	@Inject
 	private UsuarioService servuser;
+
+	@Inject
 	private PostService servPost;
+
+	@Inject
 	private RespostaService servres;
+
+	@Inject
 	private MensagemService servMens;
 
 	/**
@@ -48,33 +54,44 @@ public class MensagenController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+// cria um usuarioo e salva no banco de dados
 		Usuario usuario = new Usuario();
 		usuario.setDataNacimento(null);
 		usuario.setNome("diego");
 		servuser.persist(usuario);
-		
-		Collection<Usuario> lista = servuser.getUsuarios();
-		
-		Mensagem mens = new Mensagem();
 
+		//pesquisa todos os usuarios
+		Collection<Usuario> lista = servuser.getUsuarios();
+
+		//cria uma nova mensagem
+		Mensagem mens = new Mensagem();
 		mens.setLikes(6);
 		mens.setMensagem("Ola mundo");
 		mens.setUsuarioRemetente(usuario);
-		System.out.println(usuario.getIdUsuario());
-		servMens = new MensagemService();
+	//salva essa mensagem ja com o relacionamento do usuario
 		servMens.persist(mens);
-		
+
+		//cria um post e salva com as 2 chaves estrangeiras
 		Post post = new Post();
-		
 		post.setMensagem(mens);
 		post.setUsuarioDestinatario(usuario);
-		
 		servPost.persist(post);
 		
-		for (Usuario usuario2 : lista) {
-			response.getWriter().append("pppp" + usuario2.getNome()).append(request.getContextPath());
+		//cria uma resposta ao post
 		
+		Resposta res = new Resposta();
+		Mensagem mensagemresposta = new Mensagem();
+		mensagemresposta.setMensagem("ola mundo o k7");
+		mensagemresposta.setUsuarioRemetente(usuario);
+		servMens.persist(mensagemresposta);
+		res.setId_mensagem_abordada(mens);
+		res.setId_mensagem_resposta(mensagemresposta);
+		servres.persist(res);
+
+		//lista os usuarios 
+		for (Usuario usuario2 : lista) {
+			response.getWriter().append("   " + usuario2.getNome()).append(request.getContextPath());
+
 		}
 
 	}

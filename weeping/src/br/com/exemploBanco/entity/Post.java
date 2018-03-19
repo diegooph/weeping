@@ -46,4 +46,28 @@ public class Post {
 		this.usuarioDestinatario = usuarioDestinatario;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idPost == null) ? 0 : idPost.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Post other = (Post) obj;
+		if (idPost == null) {
+			if (other.idPost != null)
+				return false;
+		} else if (!idPost.equals(other.idPost))
+			return false;
+		return true;
+	}
 }

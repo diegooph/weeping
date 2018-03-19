@@ -22,11 +22,11 @@ public class Mensagem {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idMensagem;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "id_usuario_remetente", referencedColumnName = "idUsuario")
+	@ManyToOne
+	@JoinColumn(name = "id_usuario_remetente")
 	private Usuario usuarioRemetente;
 
-	@OneToMany(mappedBy = "idResposta", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "id_mensagem_abordada", fetch = FetchType.LAZY)
 	private Collection<Resposta> resposta;
 
 	private String mensagem;
@@ -72,5 +72,28 @@ public class Mensagem {
 	public void setLikes(Integer likes) {
 		this.likes = likes;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idMensagem == null) ? 0 : idMensagem.hashCode());
+		return result;
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Mensagem other = (Mensagem) obj;
+		if (idMensagem == null) {
+			if (other.idMensagem != null)
+				return false;
+		} else if (!idMensagem.equals(other.idMensagem))
+			return false;
+		return true;
+	}
 }
