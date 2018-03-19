@@ -1,44 +1,37 @@
 package br.com.exemploBanco.entity;
+
 import java.util.Collection;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.DiscriminatorValue;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 
-
-
-@Entity
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 //@DiscriminatorColumn(name="fl_tipo_mensagem", discriminatorType=DiscriminatorType.CHAR)
 //@DiscriminatorValue(value="M")
+@Entity
 public class Mensagem {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idMensagem;
-	
-	
-	@ManyToOne
-	@JoinColumn(name="id_usuario_remetente" )
+
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "id_usuario_remetente", referencedColumnName = "idUsuario")
 	private Usuario usuarioRemetente;
-	
-	@OneToMany(mappedBy= "idResposta" ,  fetch= FetchType.LAZY)
+
+	@OneToMany(mappedBy = "idResposta", fetch = FetchType.LAZY)
 	private Collection<Resposta> resposta;
-	
-	
+
 	private String mensagem;
-	private Integer likes; // Sera criado uma tabela para conter os registros do likes , e assim implementar casos de uso 
+	private Integer likes; // Sera criado uma tabela para conter os registros do
+							// likes , e assim implementar casos de uso
 
 	public Integer getIdMensagem() {
 		return idMensagem;
@@ -54,6 +47,14 @@ public class Mensagem {
 
 	public void setUsuarioRemetente(Usuario usuarioRemetente) {
 		this.usuarioRemetente = usuarioRemetente;
+	}
+
+	public Collection<Resposta> getResposta() {
+		return resposta;
+	}
+
+	public void setResposta(Collection<Resposta> resposta) {
+		this.resposta = resposta;
 	}
 
 	public String getMensagem() {
