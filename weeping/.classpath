@@ -13,6 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Desenvolvimento/workspace/Nova pasta/hibernate-core-4.1.3.final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Diego/git/weeping/weeping/.settings/hibernate-core-4.1.3.final.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
