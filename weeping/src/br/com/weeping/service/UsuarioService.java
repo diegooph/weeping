@@ -7,7 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import br.com.exemploBanco.entity.Usuario;
+import br.com.weeping.entity.Usuario;
 
 @Stateless
 public class UsuarioService {

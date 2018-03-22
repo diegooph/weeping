@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import br.com.exemploBanco.entity.Post;
+import br.com.weeping.entity.Post;
 
 @Stateless
 public class PostService {

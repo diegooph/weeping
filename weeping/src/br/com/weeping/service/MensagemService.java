@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import br.com.exemploBanco.entity.Mensagem;
+import br.com.weeping.entity.Mensagem;
 
 @Stateless
 public class MensagemService {

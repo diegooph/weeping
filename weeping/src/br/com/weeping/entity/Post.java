@@ -1,4 +1,4 @@
-package br.com.exemploBanco.entity;
+package br.com.weeping.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

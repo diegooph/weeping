@@ -1,4 +1,4 @@
-package br.com.exemploBanco.entity;
+package br.com.weeping.entity;
 
 import java.util.Collection;
 

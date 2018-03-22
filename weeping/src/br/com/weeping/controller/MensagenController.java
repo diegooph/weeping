@@ -1,4 +1,4 @@
-package br.com.exemploBanco.controller;
+package br.com.weeping.controller;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sun.mail.handlers.message_rfc822;
 
-import br.com.exemploBanco.entity.Mensagem;
-import br.com.exemploBanco.entity.Post;
-import br.com.exemploBanco.entity.Resposta;
-import br.com.exemploBanco.entity.Usuario;
+import br.com.weeping.entity.Mensagem;
+import br.com.weeping.entity.Post;
+import br.com.weeping.entity.Resposta;
+import br.com.weeping.entity.Usuario;
 import br.com.weeping.service.MensagemService;
 import br.com.weeping.service.PostService;
 import br.com.weeping.service.RespostaService;
