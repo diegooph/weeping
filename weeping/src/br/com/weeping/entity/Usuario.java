@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.Length;
+
 @Entity
 public class Usuario {
 
@@ -14,7 +16,11 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idUsuario;
 
+	@Length(max=10, min=0)
 	private String nome;
+
+	private String login;
+	private String senha;
 
 	private Date dataNacimento;
 
@@ -50,6 +56,22 @@ public class Usuario {
 
 	public void setDataNacimento(Date dataNacimento) {
 		this.dataNacimento = dataNacimento;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	@Override

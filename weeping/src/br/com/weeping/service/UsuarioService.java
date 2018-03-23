@@ -20,6 +20,13 @@ public class UsuarioService {
 		Collection<Usuario> resultList = em.createQuery("SELECT a from Usuario a",Usuario.class).getResultList();
 		return resultList;
 	}
+	
+	public Usuario consultar(String login, String senha) {
+		
+		Usuario usuario = new Usuario();
+		
+		return usuario;
+	}
 
 	public void persist(Usuario usuario) {
 
