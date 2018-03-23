@@ -1,59 +1,59 @@
-package br.com.weeping.controller;
+//package br.com.weeping.controller;
+//
+//import java.io.IOException;
+//import java.util.Collection;
+//
+//import javax.inject.Inject;
+//import javax.servlet.ServletException;
+//import javax.servlet.annotation.WebServlet;
+//import javax.servlet.http.HttpServlet;
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
+//
+//import com.sun.mail.handlers.message_rfc822;
+//
+//import br.com.weeping.entity.Mensagem;
+//import br.com.weeping.entity.Post;
+//import br.com.weeping.entity.Resposta;
+//import br.com.weeping.entity.Usuario;
+//import br.com.weeping.service.MensagemService;
+//import br.com.weeping.service.PostService;
+//import br.com.weeping.service.RespostaService;
+//import br.com.weeping.service.UsuarioService;
+//
+///**
+// * Servlet implementation class MensagenController
+// */
+//
+//public class MensagenController extends HttpServlet {
+//	private static final long serialVersionUID = 1L;
+//
+//	@Inject
+//	private UsuarioService servuser;
 
-import java.io.IOException;
-import java.util.Collection;
-
-import javax.inject.Inject;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.sun.mail.handlers.message_rfc822;
-
-import br.com.weeping.entity.Mensagem;
-import br.com.weeping.entity.Post;
-import br.com.weeping.entity.Resposta;
-import br.com.weeping.entity.Usuario;
-import br.com.weeping.service.MensagemService;
-import br.com.weeping.service.PostService;
-import br.com.weeping.service.RespostaService;
-import br.com.weeping.service.UsuarioService;
-
-/**
- * Servlet implementation class MensagenController
- */
-@WebServlet("/")
-public class MensagenController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-	@Inject
-	private UsuarioService servuser;
-
-	@Inject
-	private PostService servPost;
-
-	@Inject
-	private RespostaService servres;
-
-	@Inject
-	private MensagemService servMens;
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public MensagenController() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+//	@Inject
+//	private PostService servPost;
+//
+//	@Inject
+//	private RespostaService servres;
+//
+//	@Inject
+//	private MensagemService servMens;
+//
+//	/**
+//	 * @see HttpServlet#HttpServlet()
+//	 */
+//	public MensagenController() {
+//		super();
+//		// TODO Auto-generated constructor stub
+//	}
+//
+//	/**
+//	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+//	 *      response)
+//	 */
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
 // cria um usuarioo e salva no banco de dados
 //		Usuario usuario = new Usuario();
 //		usuario.setDataNacimento(null);
@@ -89,18 +89,18 @@ public class MensagenController extends HttpServlet {
 //		servres.persist(res);
 
 		//lista os usuarios 
-		request.getRequestDispatcher("/cadastro.xhtml").forward(request, response);
-
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
-}
+//		request.getRequestDispatcher("/cadastro.xhtml").forward(request, response);
+//
+//	}
+//
+//	/**
+//	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+//	 *      response)
+//	 */
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		doGet(request, response);
+//	}
+//
+//}
