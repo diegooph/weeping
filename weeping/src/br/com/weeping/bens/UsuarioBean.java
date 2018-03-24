@@ -1,4 +1,4 @@
-package br.com.weeping;
+package br.com.weeping.bens;
 
 import java.util.ArrayList;
 import java.util.List;
