@@ -1,4 +1,4 @@
-package br.com.weeping;
+package br.com.weeping.bens;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,24 +14,27 @@ import br.com.weeping.service.UsuarioService;
 
 @ViewScoped
 @ManagedBean(name = "usuarioBean")
+
+
+// a cada metodo que fomos utilizando , adicione um comentario encima do campo com o nome da paggina que foi utilizado
 public class UsuarioBean {
 
 	private Usuario usuario = new Usuario();
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	private UsuarioService usuarioDao = new UsuarioService();
 
-	public String salvar() {
-		usuarioDao.persist(usuario);
+	public String salvarNovoUsuario() {
+		usuarioDao.salvar(usuario);
 		carregarUsuarios();
 		return "";
 	}
 
-	public String novo() {
+	public String novaInstancia() {
 		usuario = new Usuario();
 		return "";
 	}
 
-	public String remove() {
+	public String removerUsuario() {
 		usuarioDao.remove(usuario.getIdUsuario());
 		usuario = new Usuario();
 		carregarUsuarios();
