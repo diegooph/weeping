@@ -24,7 +24,7 @@ public class UsuarioBean {
 	private UsuarioService usuarioDao = new UsuarioService();
 
 	public String salvarNovoUsuario() {
-		usuarioDao.persist(usuario);
+		usuarioDao.salvar(usuario);
 		carregarUsuarios();
 		return "";
 	}
