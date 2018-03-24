@@ -1,4 +1,4 @@
-//Verificação para campo texto.
+//Verificação para campo texto / contagem de caracteres e frases absurdas.
 
 
 $(document).on("input", "#textoprincipal", function () {
@@ -29,7 +29,6 @@ $(document).on("input", "#textoprincipal", function () {
     if (cr >= 300) {
         $("#referencia").text(" Você chegou ao limite... isso não esta me cheirando bem.")
     }
-
 
 });
 
@@ -75,44 +74,15 @@ function limpar() {
 //validação de campos cadastro 1º
 function validarCampos() {
 
-    if (document.getElementsByName('cep').value == null || document.getElementsByName('cep').value == "") {
-        document.getElementById('confirmar').innerHTML = "O Campo CEP esta incorreto";
-        document.getElementById('cep').focus();
-    } else if (document.getElementsByName('').value == null || document.getElementsByName('').value == "") {
-        document.getElementById('confirmar').innerHTML = "";
-        document.getElementById('').focus();
-    } else if (document.getElementsByName('').value == null || document.getElementsByName('').value == "") {
-        document.getElementById('confirmar').innerHTML = "";
-        document.getElementById('').focus();
-    } else if (document.getElementsByName('').value == null || document.getElementsByName('').value == "") {
-        document.getElementById('confirmar').innerHTML = "";
-        document.getElementById('').focus();
-    } else if (document.getElementsByName('').value == null || document.getElementsByName('').value == "") {
-        document.getElementById('confirmar').innerHTML = "";
-        document.getElementById('').focus();
-    } else if (document.getElementsByName('').value == null || document.getElementsByName('').value == "") {
-        document.getElementById('confirmar').innerHTML = "";
-        document.getElementById('').focus();
-    } else if (document.getElementsByName('').value == null || document.getElementsByName('').value == "") {
-        document.getElementById('confirmar').innerHTML = "";
-        document.getElementById('').focus();
-    } else if (document.getElementsByName('').value == null || document.getElementsByName('').value == "") {
-        document.getElementById('confirmar').innerHTML = "";
-        document.getElementById('').focus();
-    } else if (document.getElementsByName('').value == null || document.getElementsByName('').value == "") {
-        document.getElementById('confirmar').innerHTML = "";
-        document.getElementById('').focus();
-    } else if (document.getElementsByName('').value == null || document.getElementsByName('').value == "") {
-        document.getElementById('confirmar').innerHTML = "";
-        document.getElementById('').focus();
-    } else {
-        document.getElementById('confirmar').innerHTML = "Registrado com sucesso";
-    }
+    if (document.getElementById('cep').value == null || document.getElementById('cep').value == "") {
+alert("Eayyahhh");
+
+    } 
 }
 
 // Make it rain baby (Nao altere os valores)
 // use um canvas para funcionar (ainda esta em teste mas se funcionar na pagina principal vai dar bom)  <canvas id="canvas">
-
+/*
 $(document).ready(function () {
     var canvas = $('.canvas')[0];
     canvas.width = window.innerWidth;
@@ -171,3 +141,4 @@ $(document).ready(function () {
 
     }
 });
+*/
