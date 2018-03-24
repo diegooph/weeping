@@ -4,8 +4,10 @@ import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 
 import br.com.weeping.entity.Usuario;
 
@@ -16,28 +18,37 @@ public class UsuarioService {
 	private EntityManager em;
 
 	public Collection<Usuario> getUsuarios() {
-	    CriteriaBuilder builder = em.getCriteriaBuilder();
-	    CriteriaQuery<Usuario> criteria = builder.createQuery(Usuario.class);
-	    criteria.from(Usuario.class);
-	    return  em.createQuery(criteria).getResultList();
-//		Collection<Usuario> resultList = em.createQuery("SELECT a from Usuario a",Usuario.class).getResultList();
-//		return resultList;
-	}
-	
-	public Usuario consultar(String login, String senha) {
-		
-		 Usuario usuario = new Usuario();
-			    CriteriaBuilder builder = em.getCriteriaBuilder();
-			    CriteriaQuery<Usuario> criteria = builder.createQuery(Usuario.class);
-			    criteria.from(Usuario.class);
-			    criteria.where(usuario.getSenha() == senha);
-			    return  em.createQuery(criteria).getSingleResult();
-			  
+
+		Collection<Usuario> resultList = em.createQuery("SELECT a from Usuario a", Usuario.class).getResultList();
+		return resultList;
 	}
 
-	public void persist(Usuario usuario) {
+	public Usuario consultar(String login, String senha) {
+		Query q = em.createQuery("SELECT a from Usuario a where a.login = :logindigitado and a.senha = :Senhadigitada",
+				Usuario.class);
+		q.setParameter("logindigitado", login);
+		q.setParameter("Senhadigitada", senha);
+
+		return (Usuario) q.getSingleResult();
+
+	}
+
+	public void salvar(Usuario usuario) {
+		if (usuario.getIdUsuario() == null) {
+			persist(usuario);
+		} else {
+			update(usuario);
+		}
+	}
+
+	private void persist(Usuario usuario) {
 
 		em.persist(usuario);
+	}
+
+	private void update(Usuario usuario) {
+
+		em.merge(usuario);
 	}
 
 	public void remove(int id) {

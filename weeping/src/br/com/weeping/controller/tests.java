@@ -38,15 +38,15 @@ public class tests extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		 for (Usuario usuario : servuser.getUsuarios()) {
-//		Usuario usuario = new Usuario();
-//		usuario.setNome("diego");
-//		usuario.setSenha("abc");
-//		usuario = servuser.consultar(usuario.getNome(), usuario.getSenha());
-		response.getWriter().append(usuario.getNome()).append(request.getContextPath());
+	
 		
-		 }
+		Usuario usuario = new Usuario();
+		usuario.setLogin("diego");
+		usuario.setSenha("abc");
+		usuario = servuser.consultar(usuario.getLogin(), usuario.getSenha());
+			 
+		response.getWriter().append(usuario.getNome()).append(request.getContextPath());		
+		
 	}
 
 	/**
