@@ -12,6 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 //@DiscriminatorColumn(name="fl_tipo_mensagem", discriminatorType=DiscriminatorType.CHAR)
 //@DiscriminatorValue(value="M")
@@ -24,10 +27,11 @@ public class Mensagem {
 	private Integer idMensagem;
 
 	@ManyToOne()
-	@JoinColumn(name = "id_usuario_remetente")
-	private Usuario usuarioRemetente;
+	@JoinColumn(name = "id_usuario_remetente", referencedColumnName = "idUsuario")
+	private Usuario id_usuario_remetente;
 
 	@OneToMany(mappedBy = "id_mensagem_abordada", fetch = FetchType.LAZY)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Collection<Resposta> resposta;
 
 	private String mensagem;
@@ -42,12 +46,12 @@ public class Mensagem {
 		this.idMensagem = idMensagem;
 	}
 
-	public Usuario getUsuarioRemetente() {
-		return usuarioRemetente;
+	public Usuario getId_usuario_remetente() {
+		return id_usuario_remetente;
 	}
 
-	public void setUsuarioRemetente(Usuario usuarioRemetente) {
-		this.usuarioRemetente = usuarioRemetente;
+	public void setId_usuario_remetente(Usuario id_usuario_remetente) {
+		this.id_usuario_remetente = id_usuario_remetente;
 	}
 
 	public Collection<Resposta> getResposta() {

@@ -1,13 +1,18 @@
 package br.com.weeping.entity;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
@@ -25,6 +30,14 @@ public class Usuario {
 	private String senha;
 
 	private Date dataNacimento;
+
+	@OneToMany(mappedBy = "id_usuario_remetente", fetch = FetchType.LAZY)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Collection<Mensagem> mensagens;
+
+	@OneToMany(mappedBy = "id_usuario_destinatario", fetch = FetchType.LAZY)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Collection<Post> posts;
 
 	public Usuario() {
 		super();
