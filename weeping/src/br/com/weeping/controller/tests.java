@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.weeping.entity.Mensagem;
+import br.com.weeping.entity.Post;
+import br.com.weeping.entity.Resposta;
 import br.com.weeping.entity.Usuario;
 import br.com.weeping.service.MensagemService;
 import br.com.weeping.service.PostService;
@@ -48,25 +50,43 @@ public class tests extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	
-		
+		Mensagem meen2;
+		Resposta res = new Resposta();
+		Post post = new Post();
+		Mensagem men = new Mensagem();
 		Usuario usuario = new Usuario();
+
 		usuario.setLogin("diego");
 		usuario.setSenha("abc");
 		servuser.salvar(usuario);
-	 usuario = new Usuario();
+
+		men.setMensagem("asdasdasdasfasfdasfi");
+		servmen.salvar(men);
+		post.setMensagem(men);
+		post.setUsuarioDestinatario(usuario);
+		servpos.salvar(post);
+
+		usuario = new Usuario();
 		usuario.setLogin("carlos");
 		servuser.salvar(usuario);
+		men.setMensagem("asdasdasdasfasfdasfi");
+		servmen.salvar(men);
+		 meen2 = men;
+		post.setMensagem(men);
+		post.setUsuarioDestinatario(usuario);
+		servpos.salvar(post);
+
 		usuario = new Usuario();
 		usuario.setLogin("eueumesmo");
 		servuser.salvar(usuario);
-		
-		Mensagem men = new Mensagem();
-		men.setMensagem("asughaosi");
-		servmen.persist(men);
-			 
-		response.getWriter().append(usuario.getNome()).append(request.getContextPath());		
-		
+		men.setMensagem("asdasdasdasfasfdasfi");
+		servmen.salvar(men);
+res.setId_mensagem_abordada(men);
+
+res.setId_mensagem_resposta(meen2);
+servres.salvar(res);
+		response.getWriter().append(usuario.getNome()).append(request.getContextPath());
+
 	}
 
 	/**
