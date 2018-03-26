@@ -16,11 +16,12 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "usuario_seq")
+
 	private Integer idUsuario;
 
-	@Length(max=10, min=0)
-	private String nome;
 
+	private String nome;
+	@Length(max=10, min=0)
 	private String login;
 	private String senha;
 

@@ -9,7 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.weeping.entity.Mensagem;
 import br.com.weeping.entity.Usuario;
+import br.com.weeping.service.MensagemService;
+import br.com.weeping.service.PostService;
+import br.com.weeping.service.RespostaService;
 import br.com.weeping.service.UsuarioService;
 
 /**
@@ -26,6 +30,12 @@ public class tests extends HttpServlet {
 
 	@Inject
 	private UsuarioService servuser;
+	@Inject
+	MensagemService servmen;
+	@Inject
+	PostService servpos;
+	@Inject
+	RespostaService servres;
 
 	public tests() {
 		super();
@@ -43,7 +53,17 @@ public class tests extends HttpServlet {
 		Usuario usuario = new Usuario();
 		usuario.setLogin("diego");
 		usuario.setSenha("abc");
-		usuario = servuser.consultar(usuario.getLogin(), usuario.getSenha());
+		servuser.salvar(usuario);
+	 usuario = new Usuario();
+		usuario.setLogin("carlos");
+		servuser.salvar(usuario);
+		usuario = new Usuario();
+		usuario.setLogin("eueumesmo");
+		servuser.salvar(usuario);
+		
+		Mensagem men = new Mensagem();
+		men.setMensagem("asughaosi");
+		servmen.persist(men);
 			 
 		response.getWriter().append(usuario.getNome()).append(request.getContextPath());		
 		

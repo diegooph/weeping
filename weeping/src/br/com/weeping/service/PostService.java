@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import br.com.weeping.entity.Mensagem;
 import br.com.weeping.entity.Post;
 
 @Stateless
@@ -20,9 +21,22 @@ public class PostService {
 		return resultList;
 	}
 
-	public void persist(Post post) {
-	
+	public void salvar(Post post) {
+		if (post.getIdPost() == null) {
+			persist(post);
+		} else {
+			update(post);
+		}
+	}
+
+	private void persist(Post post) {
+
 		em.persist(post);
+	}
+
+	private void update(Post post) {
+
+		em.merge(post);
 	}
 
 	public void remove(int id) {

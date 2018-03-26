@@ -7,23 +7,29 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
+@SequenceGenerator(name = "usuario_seq" , sequenceName="usuario_seq" , allocationSize = 1 , initialValue = 1)
 // @DiscriminatorValue(value="R")
 public class Resposta  {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "usuario_seq")
 	private Integer idResposta;
 	
 	
 	
 	@JoinColumn(name = "id_mensagem_abordada")
-	@ManyToOne
+	@ManyToOne()
 	private Mensagem id_mensagem_abordada;
 	
 	@JoinColumn(name = "id_mensagem_resposta")
-	@ManyToOne
+	@ManyToOne()
+	@Cascade(value = { CascadeType.REMOVE, CascadeType.SAVE_UPDATE })
 	private Mensagem id_mensagem_resposta;
 
 	

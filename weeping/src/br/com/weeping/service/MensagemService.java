@@ -6,6 +6,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.hibernate.sql.Update;
+
 import br.com.weeping.entity.Mensagem;
 
 @Stateless
@@ -20,9 +22,22 @@ public class MensagemService {
 		return resultList;
 	}
 
-	public void persist(Mensagem mensagem) {
-		
+	public void salvar(Mensagem mensagem) {
+		if (mensagem.getIdMensagem() == null) {
+			persist(mensagem);
+		} else {
+			update(mensagem);
+		}
+	}
+
+	private void persist(Mensagem mensagem) {
+
 		emm.persist(mensagem);
+	}
+
+	private void update(Mensagem mensagem) {
+
+		emm.merge(mensagem);
 	}
 
 	public void remove(int id) {

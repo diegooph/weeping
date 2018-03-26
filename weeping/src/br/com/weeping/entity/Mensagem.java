@@ -2,7 +2,7 @@ package br.com.weeping.entity;
 
 import java.util.Collection;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,22 +11,29 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 //@DiscriminatorColumn(name="fl_tipo_mensagem", discriminatorType=DiscriminatorType.CHAR)
 //@DiscriminatorValue(value="M")
 @Entity
+@SequenceGenerator(name = "usuario_seq" , sequenceName="usuario_seq" , allocationSize = 1 , initialValue = 1)
 public class Mensagem {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "usuario_seq")
 	private Integer idMensagem;
 
-	@ManyToOne
+	@ManyToOne()
+	 @Cascade(value = { CascadeType.REMOVE, CascadeType.SAVE_UPDATE })
 	@JoinColumn(name = "id_usuario_remetente")
 	private Usuario usuarioRemetente;
 
-	@OneToMany(mappedBy = "id_mensagem_abordada", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "id_mensagem_abordada", fetch = FetchType.LAZY )
+	 @Cascade(value = { CascadeType.REMOVE, CascadeType.SAVE_UPDATE })
 	private Collection<Resposta> resposta;
 
 	private String mensagem;
