@@ -8,25 +8,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
 @Entity
-@SequenceGenerator(name = "usuario_seq", sequenceName = "usuario_seq", allocationSize = 1, initialValue = 1)
+@SequenceGenerator(name = "Post_seq", sequenceName = "Post_seq", allocationSize = 1, initialValue = 1)
 // @DiscriminatorValue(value="P")
 public class Post {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Post_seq")
 	private Integer idPost;
 
 	@JoinColumn(name = "id_usuario_destinatario", referencedColumnName = "idUsuario")
 	@ManyToOne()
-	 @Cascade(value = { CascadeType.REMOVE, CascadeType.SAVE_UPDATE })
 	private Usuario usuarioDestinatario;
-
 	@JoinColumn(name = "id_mensagem_post", referencedColumnName = "idMensagem")
 	@ManyToOne()
-	@Cascade(value = { CascadeType.REMOVE, CascadeType.SAVE_UPDATE })
+
 	private Mensagem mensagem;
 
 	public Mensagem getMensagem() {

@@ -1,6 +1,5 @@
 package br.com.weeping.entity;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,30 +8,23 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
 @Entity
-@SequenceGenerator(name = "usuario_seq" , sequenceName="usuario_seq" , allocationSize = 1 , initialValue = 1)
+@SequenceGenerator(name = "res_seq", sequenceName = "res_seq", allocationSize = 1, initialValue = 1)
 // @DiscriminatorValue(value="R")
-public class Resposta  {
+public class Resposta {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "usuario_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "res_seq")
 	private Integer idResposta;
-	
-	
-	
+
 	@JoinColumn(name = "id_mensagem_abordada")
 	@ManyToOne()
 	private Mensagem id_mensagem_abordada;
-	
+
 	@JoinColumn(name = "id_mensagem_resposta")
 	@ManyToOne()
-	@Cascade(value = { CascadeType.REMOVE, CascadeType.SAVE_UPDATE })
 	private Mensagem id_mensagem_resposta;
 
-	
 	public Integer getIdResposta() {
 		return idResposta;
 	}

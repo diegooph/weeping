@@ -61,30 +61,39 @@ public class tests extends HttpServlet {
 		servuser.salvar(usuario);
 
 		men.setMensagem("asdasdasdasfasfdasfi");
+		men.setUsuarioRemetente(usuario);
 		servmen.salvar(men);
 		post.setMensagem(men);
 		post.setUsuarioDestinatario(usuario);
 		servpos.salvar(post);
 
+		post = new Post();
+		men = new Mensagem();
+		
 		usuario = new Usuario();
 		usuario.setLogin("carlos");
 		servuser.salvar(usuario);
 		men.setMensagem("asdasdasdasfasfdasfi");
+		men.setUsuarioRemetente(usuario);
 		servmen.salvar(men);
-		 meen2 = men;
+		meen2 = men;
 		post.setMensagem(men);
 		post.setUsuarioDestinatario(usuario);
 		servpos.salvar(post);
 
+		men = new Mensagem();
 		usuario = new Usuario();
 		usuario.setLogin("eueumesmo");
 		servuser.salvar(usuario);
+		men.setUsuarioRemetente(usuario);
 		men.setMensagem("asdasdasdasfasfdasfi");
 		servmen.salvar(men);
-res.setId_mensagem_abordada(men);
+		res.setId_mensagem_abordada(men);
 
-res.setId_mensagem_resposta(meen2);
-servres.salvar(res);
+		res.setId_mensagem_resposta(meen2);
+		servres.salvar(res);
+		
+		
 		response.getWriter().append(usuario.getNome()).append(request.getContextPath());
 
 	}

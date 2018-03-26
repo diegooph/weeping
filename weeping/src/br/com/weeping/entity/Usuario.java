@@ -11,17 +11,16 @@ import javax.persistence.SequenceGenerator;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
-@SequenceGenerator(name = "usuario_seq" , sequenceName="usuario_seq" , allocationSize = 1 , initialValue = 1)
+@SequenceGenerator(name = "usuario_seq", sequenceName = "usuario_seq", allocationSize = 1, initialValue = 1)
 public class Usuario {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "usuario_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_seq")
 
 	private Integer idUsuario;
 
-
 	private String nome;
-	@Length(max=10, min=0)
+	@Length(max = 10, min = 0)
 	private String login;
 	private String senha;
 
