@@ -52,7 +52,7 @@ public class UsuarioService {
 	}
 
 	public void remove(int id) {
-
+// apaga tudo referente ao usuario
 		em.remove(em.find(Usuario.class, id));
 	}
 

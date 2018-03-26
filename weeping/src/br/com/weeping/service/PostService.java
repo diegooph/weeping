@@ -41,7 +41,8 @@ public class PostService {
 
 	public void remove(int id) {
 
-		em.remove(em.find(Post.class, id));
+		// nao usar esse metodo apagar diretamente a mensagem
+		//em.remove(em.find(Post.class, id));
 	}
 
 }

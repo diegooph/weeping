@@ -41,7 +41,7 @@ public class MensagemService {
 	}
 
 	public void remove(int id) {
-
+		// ja esta programada para deletaor o post ou a resposta vinculada a ela e todos os seus filhos
 		emm.remove(emm.find(Mensagem.class, id));
 	}
 
