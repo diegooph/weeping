@@ -9,6 +9,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
+import br.com.weeping.entity.Login;
 import br.com.weeping.entity.Usuario;
 import br.com.weeping.service.UsuarioService;
 
@@ -18,33 +19,37 @@ import br.com.weeping.service.UsuarioService;
 
 // a cada metodo que fomos utilizando , adicione um comentario encima do campo com o nome da paggina que foi utilizado
 public class UsuarioBean {
-
-	private Usuario usuario = new Usuario();
+	private Login login ;
+	private Usuario usuario ;
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	private UsuarioService usuarioDao = new UsuarioService();
 
 	public String salvarNovoUsuario() {
 		usuarioDao.salvar(usuario);
-		carregarUsuarios();
+//		carregarUsuarios();
 		return "";
 	}
 
 	public String novaInstancia() {
 		usuario = new Usuario();
+		login = new Login();
+		login.setUsuario(usuario);
 		return "";
 	}
 
 	public String removerUsuario() {
 		usuarioDao.remove(usuario.getIdUsuario());
 		usuario = new Usuario();
-		carregarUsuarios();
+//		carregarUsuarios();
 		return "";
 	}
 
-	@PostConstruct
-	public void carregarUsuarios() {
-		usuarioDao.getUsuarios();
-	}
+//	@PostConstruct
+//	public void carregarUsuarios() {
+//		usuarioDao.getUsuarios();
+//	}
+//	metodo para carregar a lista dos usuarios apos o construtor
+	
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -70,22 +75,7 @@ public class UsuarioBean {
 		return usuarios;
 	}
 
-	public String logar() {
-
-		Usuario usuarioUser = usuarioDao.consultar(usuario.getLogin(), usuario.getSenha());
-
-		if (usuarioUser != null) {// achou o usuário
-
-			// adicionar o usuário na sessão usuarioLogado
-			FacesContext context = FacesContext.getCurrentInstance();
-			ExternalContext externalContext = context.getExternalContext();
-			externalContext.getSessionMap().put("usuarioLogado", usuarioUser);
-
-			return "principal.xhtml";
-		}
-
-		return "";
-	}
+	
 
 	/*public boolean permiteAcesso(String acesso) {
 		FacesContext context = FacesContext.getCurrentInstance();

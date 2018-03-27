@@ -50,51 +50,8 @@ public class tests extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Mensagem meen2;
-		Resposta res = new Resposta();
-		Post post = new Post();
-		Mensagem men = new Mensagem();
-		Usuario usuario = new Usuario();
-
-		usuario.setLogin("diego");
-		usuario.setSenha("abc");
-		servuser.salvar(usuario);
-
-		men.setMensagem("asdasdasdasfasfdasfi");
-		men.setId_usuario_remetente(usuario);
-		servmen.salvar(men);
-		post.setMensagem(men);
-		post.setId_usuario_destinatario(usuario);
-		servpos.salvar(post);
-
-		post = new Post();
-		men = new Mensagem();
-		
-		usuario = new Usuario();
-		usuario.setLogin("carlos");
-		servuser.salvar(usuario);
-		men.setMensagem("asdasdasdasfasfdasfi");
-		men.setId_usuario_remetente(usuario);
-		servmen.salvar(men);
-		meen2 = men;
-		post.setMensagem(men);
-		post.setId_usuario_destinatario(usuario);
-		servpos.salvar(post);
-
-		men = new Mensagem();
-		usuario = new Usuario();
-		usuario.setLogin("eueumesmo");
-		servuser.salvar(usuario);
-		men.setId_usuario_remetente(usuario);
-		men.setMensagem("asdasdasdasfasfdasfi");
-		servmen.salvar(men);
-		res.setId_mensagem_abordada(men);
-
-		res.setId_mensagem_resposta(meen2);
-		servres.salvar(res);
-		
-		
-		response.getWriter().append(usuario.getNome()).append(request.getContextPath());
+	
+		response.getWriter().append("aria detestes fique longe desse bug").append(request.getContextPath());
 
 	}
 
