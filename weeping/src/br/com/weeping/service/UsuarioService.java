@@ -4,10 +4,7 @@ import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
+
 
 import br.com.weeping.entity.Usuario;
 
@@ -43,7 +40,7 @@ public class UsuarioService {
 	}
 
 	public void remove(int id) {
-// apaga tudo referente ao usuario nao usar pois nao apagara o login
+		// apaga tudo referente ao usuario nao usar pois nao apagara o login
 		//em.remove(em.find(Usuario.class, id));
 	}
 
