@@ -1,32 +1,36 @@
 package br.com.weeping.entity;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
+@SequenceGenerator(name = "res_seq", sequenceName = "res_seq", allocationSize = 1, initialValue = 1)
 // @DiscriminatorValue(value="R")
-public class Resposta  {
+public class Resposta {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "res_seq")
 	private Integer idResposta;
-	
-	
-	
-	@JoinColumn(name = "id_mensagem_abordada")
-	@ManyToOne
+
+	@ManyToOne()
+	@JoinColumn(name = "id_mensagem_abordada", referencedColumnName = "idMensagem")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Mensagem id_mensagem_abordada;
-	
-	@JoinColumn(name = "id_mensagem_resposta")
-	@ManyToOne
+
+	@OneToOne()
+	@JoinColumn(name = "id_mensagem_resposta", referencedColumnName = "idMensagem")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Mensagem id_mensagem_resposta;
 
-	
 	public Integer getIdResposta() {
 		return idResposta;
 	}

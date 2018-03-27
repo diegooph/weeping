@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import br.com.weeping.entity.Post;
 import br.com.weeping.entity.Resposta;
 
 @Stateless
@@ -16,18 +17,31 @@ public class RespostaService {
 
 	public Collection<Resposta> getAlunos() {
 
-		Collection<Resposta> resultList = em.createQuery("SELECT r from resposta r",Resposta.class).getResultList();
+		Collection<Resposta> resultList = em.createQuery("SELECT r from resposta r", Resposta.class).getResultList();
 		return resultList;
 	}
 
-	public void persist(Resposta resposta) {
+	public void salvar(Resposta resposta) {
+		if (resposta.getIdResposta() == null) {
+			persist(resposta);
+		} else {
+			update(resposta);
+		}
+	}
+
+	private void persist(Resposta resposta) {
 
 		em.persist(resposta);
 	}
 
-	public void remove(int id) {
+	private void update(Resposta resposta) {
 
-		em.remove(em.find(Resposta.class, id));
+		em.merge(resposta);
+	}
+
+	public void remove(int id) {
+		// nao usar esse metodo apagar diretamente a mensagem
+		//em.remove(em.find(Resposta.class, id));
 	}
 
 }

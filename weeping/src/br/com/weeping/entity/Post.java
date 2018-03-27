@@ -1,25 +1,33 @@
 package br.com.weeping.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
+@SequenceGenerator(name = "Post_seq", sequenceName = "Post_seq", allocationSize = 1, initialValue = 1)
 // @DiscriminatorValue(value="P")
 public class Post {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Post_seq")
 	private Integer idPost;
 
+	@ManyToOne()
 	@JoinColumn(name = "id_usuario_destinatario", referencedColumnName = "idUsuario")
-	@ManyToOne
-	private Usuario usuarioDestinatario;
+	private Usuario id_usuario_destinatario;
 
 	@JoinColumn(name = "id_mensagem_post", referencedColumnName = "idMensagem")
-	@ManyToOne
+	@OneToOne()
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Mensagem mensagem;
 
 	public Mensagem getMensagem() {
@@ -38,12 +46,12 @@ public class Post {
 		this.idPost = idPost;
 	}
 
-	public Usuario getUsuarioDestinatario() {
-		return usuarioDestinatario;
+	public Usuario getId_usuario_destinatario() {
+		return id_usuario_destinatario;
 	}
 
-	public void setUsuarioDestinatario(Usuario usuarioDestinatario) {
-		this.usuarioDestinatario = usuarioDestinatario;
+	public void setId_usuario_destinatario(Usuario id_usuario_destinatario) {
+		this.id_usuario_destinatario = id_usuario_destinatario;
 	}
 
 	@Override

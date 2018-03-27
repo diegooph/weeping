@@ -9,7 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.weeping.entity.Mensagem;
+import br.com.weeping.entity.Post;
+import br.com.weeping.entity.Resposta;
 import br.com.weeping.entity.Usuario;
+import br.com.weeping.service.MensagemService;
+import br.com.weeping.service.PostService;
+import br.com.weeping.service.RespostaService;
 import br.com.weeping.service.UsuarioService;
 
 /**
@@ -26,6 +32,12 @@ public class tests extends HttpServlet {
 
 	@Inject
 	private UsuarioService servuser;
+	@Inject
+	MensagemService servmen;
+	@Inject
+	PostService servpos;
+	@Inject
+	RespostaService servres;
 
 	public tests() {
 		super();
@@ -38,15 +50,52 @@ public class tests extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	
-		
+		Mensagem meen2;
+		Resposta res = new Resposta();
+		Post post = new Post();
+		Mensagem men = new Mensagem();
 		Usuario usuario = new Usuario();
+
 		usuario.setLogin("diego");
 		usuario.setSenha("abc");
-		usuario = servuser.consultar(usuario.getLogin(), usuario.getSenha());
-			 
-		response.getWriter().append(usuario.getNome()).append(request.getContextPath());		
+		servuser.salvar(usuario);
+
+		men.setMensagem("asdasdasdasfasfdasfi");
+		men.setId_usuario_remetente(usuario);
+		servmen.salvar(men);
+		post.setMensagem(men);
+		post.setId_usuario_destinatario(usuario);
+		servpos.salvar(post);
+
+		post = new Post();
+		men = new Mensagem();
 		
+		usuario = new Usuario();
+		usuario.setLogin("carlos");
+		servuser.salvar(usuario);
+		men.setMensagem("asdasdasdasfasfdasfi");
+		men.setId_usuario_remetente(usuario);
+		servmen.salvar(men);
+		meen2 = men;
+		post.setMensagem(men);
+		post.setId_usuario_destinatario(usuario);
+		servpos.salvar(post);
+
+		men = new Mensagem();
+		usuario = new Usuario();
+		usuario.setLogin("eueumesmo");
+		servuser.salvar(usuario);
+		men.setId_usuario_remetente(usuario);
+		men.setMensagem("asdasdasdasfasfdasfi");
+		servmen.salvar(men);
+		res.setId_mensagem_abordada(men);
+
+		res.setId_mensagem_resposta(meen2);
+		servres.salvar(res);
+		
+		
+		response.getWriter().append(usuario.getNome()).append(request.getContextPath());
+
 	}
 
 	/**
