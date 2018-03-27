@@ -9,6 +9,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
+import br.com.weeping.entity.Login;
 import br.com.weeping.entity.Usuario;
 import br.com.weeping.service.UsuarioService;
 
@@ -18,8 +19,8 @@ import br.com.weeping.service.UsuarioService;
 
 // a cada metodo que fomos utilizando , adicione um comentario encima do campo com o nome da paggina que foi utilizado
 public class UsuarioBean {
-
-	private Usuario usuario = new Usuario();
+	private Login login ;
+	private Usuario usuario ;
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	private UsuarioService usuarioDao = new UsuarioService();
 
@@ -31,6 +32,8 @@ public class UsuarioBean {
 
 	public String novaInstancia() {
 		usuario = new Usuario();
+		login = new Login();
+		login.set
 		return "";
 	}
 
