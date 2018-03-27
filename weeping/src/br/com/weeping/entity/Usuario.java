@@ -6,6 +6,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -20,8 +22,9 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_seq")
 	private Integer idUsuario;
 	private String nome;
+	private String sobrenome;
 	private String email;
-	@OneToOne( fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Endereco endereco;
 
@@ -33,6 +36,10 @@ public class Usuario {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Collection<Post> posts;
 
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "listaAmigo")
+	private Collection<Usuario> listaAmigos;
+
 	public Usuario() {
 		super();
 	}
@@ -41,6 +48,38 @@ public class Usuario {
 		super();
 		this.nome = nome;
 
+	}
+
+	public Collection<Usuario> getListaAmigos() {
+		return listaAmigos;
+	}
+
+	public void setListaAmigos(Collection<Usuario> listaAmigos) {
+		this.listaAmigos = listaAmigos;
+	}
+
+	public String getSobrenome() {
+		return sobrenome;
+	}
+
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	public Integer getIdUsuario() {
@@ -58,7 +97,6 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 
 	@Override
 	public int hashCode() {
