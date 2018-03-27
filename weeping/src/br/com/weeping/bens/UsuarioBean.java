@@ -33,7 +33,7 @@ public class UsuarioBean {
 	public String novaInstancia() {
 		usuario = new Usuario();
 		login = new Login();
-		login.set
+		login.setUsuario(usuario);
 		return "";
 	}
 
@@ -73,22 +73,7 @@ public class UsuarioBean {
 		return usuarios;
 	}
 
-	public String logar() {
-
-		Usuario usuarioUser = usuarioDao.consultar(usuario.getLogin(), usuario.getSenha());
-
-		if (usuarioUser != null) {// achou o usuário
-
-			// adicionar o usuário na sessão usuarioLogado
-			FacesContext context = FacesContext.getCurrentInstance();
-			ExternalContext externalContext = context.getExternalContext();
-			externalContext.getSessionMap().put("usuarioLogado", usuarioUser);
-
-			return "principal.xhtml";
-		}
-
-		return "";
-	}
+	
 
 	/*public boolean permiteAcesso(String acesso) {
 		FacesContext context = FacesContext.getCurrentInstance();

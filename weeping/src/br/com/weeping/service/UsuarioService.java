@@ -23,15 +23,6 @@ public class UsuarioService {
 		return resultList;
 	}
 
-	public Usuario consultar(String login, String senha) {
-		Query q = em.createQuery("SELECT a from Usuario a where a.login = :logindigitado and a.senha = :Senhadigitada",
-				Usuario.class);
-		q.setParameter("logindigitado", login);
-		q.setParameter("Senhadigitada", senha);
-
-		return (Usuario) q.getSingleResult();
-
-	}
 
 	public void salvar(Usuario usuario) {
 		if (usuario.getIdUsuario() == null) {
@@ -52,8 +43,8 @@ public class UsuarioService {
 	}
 
 	public void remove(int id) {
-// apaga tudo referente ao usuario
-		em.remove(em.find(Usuario.class, id));
+// apaga tudo referente ao usuario nao usar pois nao apagara o login
+		//em.remove(em.find(Usuario.class, id));
 	}
 
 }
