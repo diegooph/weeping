@@ -17,7 +17,7 @@ import br.com.weeping.service.UsuarioService;
 
 
 // a cada metodo que fomos utilizando , adicione um comentario encima do campo com o nome da paggina que foi utilizado
-public class MensagemBem {
+public class MensagemBens {
 
 	private Usuario usuario = new Usuario();
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
