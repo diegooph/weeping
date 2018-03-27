@@ -44,23 +44,20 @@
             <ul class="list-group">
                 <li class="list-group-item bg-success">Dados da Conta</li>
                 <li class="list-group-item">
-<<<<<<< HEAD
+
                     <h:form class="form-horizontal" >
-=======
-                    <form class="form-horizontal" action="">
->>>>>>> branch 'master' of https://github.com/diegooph/weeping
+
                         <fieldset>
                             <!-- Text input-->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="Nome">Nome</label>
                                 <div class="col-md-8">
-<<<<<<< HEAD
+
                                     <h:inputText id="Nome" name="Nome" type="text" placeholder="João"
                                            class="form-control input-md"  value="#{usuariobean.usuario.nome}"/>
-=======
-                                    <input id="Nome" name="Nome" type="text" placeholder="Nome"
-                                           class="form-control input-md" required />
->>>>>>> branch 'master' of https://github.com/diegooph/weeping
+
+                                   
+
                                 </div>
                             </div>
                             <!-- Text input-->
@@ -68,18 +65,18 @@
                                 <label class="col-md-4 control-label" for="sobrenome">Sobrenome</label>
                                 <div class="col-md-8">
                                     <h:inputText id="sobrenome" name="sobrenome" type="text" placeholder="Sobrenome"
-                                           class="form-control input-md"  value=""/>
+                                           class="form-control input-md"  value="#{usuariobean.usuario.sobrenome}"/>
                                            
                                 </div>
                             </div>
 
                             <!-- Text input-->
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="sobrenome">Login</label>
+                                <label class="col-md-4 control-label" for="login">Login</label>
                                 <div class="col-md-8">
-                                    <h:inputText id="loginid" name="sobrenome" type="text"
+                                    <h:inputText id="loginid" name="login" type="text"
                                            placeholder="use para entrar no site" class="form-control input-md"
-                                            value="#{usuario.}"/>
+                                            value="#{usuariobean.login.login}"/>
                                 </div>
                             </div>
 
@@ -88,7 +85,7 @@
                                 <label class="col-md-4 control-label" for="senha">Senha</label>
                                 <div class="col-md-8">
                                     <h:inputText id="senha" name="senha" type="password" placeholder="****************"
-                                           class="form-control input-md"  value="#{usuario.}"/>
+                                           class="form-control input-md"  value="#{usuariobean.login.senha}"/>
                                 </div>
                             </div>
 
@@ -97,7 +94,7 @@
                                 <label class="col-md-4 control-label" for="rsenha">Re-senha</label>
                                 <div class="col-md-8">
                                     <h:inputText id="rsenha" name="rsenha" type="password" placeholder="****************"
-                                           class="form-control input-md" required="" value="#{usuario.}"/>
+                                           class="form-control input-md" required="true"/>
                                 </div>
                             </div>
 
@@ -121,7 +118,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">@</span>
                                         <h:inputText id="email" name="email" class="form-control"
-                                               placeholder="chorao@chora.mais.br" type="text"  value="#{usuario.}"/>
+                                               placeholder="chorao@chora.mais.br" type="text"  value="#{usuariobean.usuario.email}"/>
                                     </div>
                                 </div>
                             </div>
@@ -132,7 +129,7 @@
                                 <div class="col-md-8">
                                     <h:inputText id="endereco" name="endereco" type="text"
                                            placeholder="rua do cairo | av. das torres" class="form-control input-md"
-                                           required="" />
+                                           required="true" value= "#{usuariobean.usuario.endereco.rua}"/>
                                 </div>
                             </div>
 
@@ -141,7 +138,7 @@
                                 <label class="col-md-4 control-label" for="cep">CEP</label>
                                 <div class="col-md-8">
                                     <h:inputText id="cep" name="cep" type="text" placeholder="00000-000"
-                                           class="form-control input-md" value="#{usuario.}" />
+                                           class="form-control input-md" value="#{usuariobean.usuario.endereco.cep}" />
                                 </div>
                             </div>
 
@@ -150,7 +147,7 @@
                                 <label class="col-md-4 control-label" for="cidade">Cidade</label>
                                 <div class="col-md-8">
                                     <h:inputText id="cidade" name="cidade" type="text" placeholder="Florianópolis | Bahia"
-                                           class="form-control input-md" value="#{usuario.}" />
+                                           class="form-control input-md" value="#{usuariobean.usuario.endereco.cidade}" />
                                 </div>
                             </div>
 
@@ -159,7 +156,7 @@
                                 <label class="col-md-4 control-label" for="bairro">Bairro</label>
                                 <div class="col-md-8">
                                     <h:inputText id="bairro" name="bairro" type="text" placeholder="Pantanal | trindade"
-                                           class="form-control input-md" value="#{usuario.}" />
+                                           class="form-control input-md" value="#{usuariobean.usuario.endereco.bairro}" />
                                 </div>
                             </div>
                         </fieldset>
