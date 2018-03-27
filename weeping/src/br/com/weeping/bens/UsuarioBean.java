@@ -26,7 +26,7 @@ public class UsuarioBean {
 
 	public String salvarNovoUsuario() {
 		usuarioDao.salvar(usuario);
-		carregarUsuarios();
+//		carregarUsuarios();
 		return "";
 	}
 
@@ -40,14 +40,16 @@ public class UsuarioBean {
 	public String removerUsuario() {
 		usuarioDao.remove(usuario.getIdUsuario());
 		usuario = new Usuario();
-		carregarUsuarios();
+//		carregarUsuarios();
 		return "";
 	}
 
-	@PostConstruct
-	public void carregarUsuarios() {
-		usuarioDao.getUsuarios();
-	}
+//	@PostConstruct
+//	public void carregarUsuarios() {
+//		usuarioDao.getUsuarios();
+//	}
+//	metodo para carregar a lista dos usuarios apos o construtor
+	
 
 	public Usuario getUsuario() {
 		return usuario;
