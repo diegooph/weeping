@@ -1,19 +1,16 @@
 package br.com.weeping.entity;
 
 import java.util.Collection;
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
-
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.validator.constraints.Length;
 
 @Entity
 @SequenceGenerator(name = "usuario_seq", sequenceName = "usuario_seq", allocationSize = 1, initialValue = 1)
@@ -21,15 +18,12 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_seq")
-
 	private Integer idUsuario;
-
 	private String nome;
-	@Length(max = 10, min = 0)
-	private String login;
-	private String senha;
-
-	private Date dataNacimento;
+	private String email;
+	@OneToOne( fetch = FetchType.EAGER)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Endereco endereco;
 
 	@OneToMany(mappedBy = "id_usuario_remetente", fetch = FetchType.LAZY)
 	@OnDelete(action = OnDeleteAction.CASCADE)
@@ -43,10 +37,10 @@ public class Usuario {
 		super();
 	}
 
-	public Usuario(String nome, Date dataNacimento) {
+	public Usuario(String nome) {
 		super();
 		this.nome = nome;
-		this.dataNacimento = dataNacimento;
+
 	}
 
 	public Integer getIdUsuario() {
@@ -65,29 +59,6 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public Date getDataNacimento() {
-		return dataNacimento;
-	}
-
-	public void setDataNacimento(Date dataNacimento) {
-		this.dataNacimento = dataNacimento;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
 
 	@Override
 	public int hashCode() {
