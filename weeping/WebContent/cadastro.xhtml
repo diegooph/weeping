@@ -1,5 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<html class="bgfundo" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
+<html class="bgfundo" xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -109,7 +111,7 @@
             <ul class="list-group">
                 <li class="list-group-item bg-success">Dados Pessoais</li>
                 <li class="list-group-item">
-                    <h:form class="form-horizontal">
+                    <h:form class="form-horizontal" id="formulario">
                         <fieldset>
                             <!-- Prepended text-->
                             <div class="form-group">
@@ -181,17 +183,22 @@
             <ul class="list-group">
                 <li class="list-group-item bg-success">Termos e condiçôes</li>
                 <li class="list-group-item">
-                    <h:form class="form-horizontal">
+                    <h:form class="form-horizontal" id="botoes">
                         <fieldset>
 						<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModalLong">
                                 Clique aqui para ler os termos
                             </button>
-
+                            <label>
+                            	<h:selectBooleanCheckbox id="aceitarTermos" value="#{usuarioBean.aceitarTermos}"></h:selectBooleanCheckbox>
+                            	Aceito os termos
+							</label>
                         </fieldset>
+	                    <p id="confirmar" class="alinhamentoDeTexto"></p>
+	                    <h:commandButton  class="btn btn-block btn-secondary" onclick="validarCampos()" 
+	                    		 value = "Finalizar cadastro" action="#{usuarioBean.salvarNovoUsuario()}"/>
+	                
                     </h:form>
-                    <p id="confirmar" class="alinhamentoDeTexto"></p>
-                    <h:commandButton  class="btn btn-block btn-secondary" type="submit" value = "Finalizar cadastro" action="#{usuarioBean.salvarNovoUsuario()}" />
-                </li>
+                  </li>
             </ul>
         </div>
     </div>
@@ -223,12 +230,16 @@
                 <h2 class="termosH">Ligações a Sites de terceiros</h2>
                 <p>O Weeping possui ligações para outros sites, os quais, a nosso ver, podem conter informações / ferramentas úteis para os nossos visitantes. A nossa política de privacidade não é aplicada a sites de terceiros, pelo que, caso visite outro site a partir do nosso deverá ler a politica de privacidade do mesmo.</p>
                 <p>Não nos responsabilizamos pela política de privacidade ou conteúdo presente nesses mesmos sites.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" >Rejeitar</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal" >Concordo</button>
+            </div> 
+            <h:form class="modal-footer">
+                <h:commandButton type="button" class="btn btn-danger" data-dismiss="modal" value="Rejeitar">
+                	<f:ajax event="click" listener="#{usuarioBean.setAceitarTermos(false)}" render=":botoes:aceitarTermos"  oncomplete="fecharmodal();return false"/>
+               	</h:commandButton>
+                <h:commandButton type="button" class="btn btn-success" data-dismiss="modal" value="Concordo" >
+                	<f:ajax event="click" listener="#{usuarioBean.setAceitarTermos(true)}" render=":botoes" oncomplete="return false"/>
+               	</h:commandButton>
 
-            </div>
+            </h:form>
         </div>
     </div>
 </div>

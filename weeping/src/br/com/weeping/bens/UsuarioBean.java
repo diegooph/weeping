@@ -23,6 +23,7 @@ public class UsuarioBean {
 	private Usuario usuario ;
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	private UsuarioService usuarioDao = new UsuarioService();
+	private boolean aceitarTermos = false;
 
 	public String salvarNovoUsuario() {
 		usuarioDao.salvar(usuario);
@@ -73,6 +74,14 @@ public class UsuarioBean {
 
 	public List<Usuario> getUsuarios() {
 		return usuarios;
+	}
+
+	public boolean isAceitarTermos() {
+		return aceitarTermos;
+	}
+
+	public void setAceitarTermos(boolean aceitarTermos) {
+		this.aceitarTermos = aceitarTermos;
 	}
 
 	

@@ -74,8 +74,8 @@ function limpar() {
 //validação de campos cadastro 1º
 function validarCampos() {
 
-    if (document.getElementById('cep').value == null || document.getElementById('cep').value == "") {
-alert("Eayyahhh");
+    if (document.getElementById('formulario:cep').value == null || document.getElementById('formulario:cep').value == "") {
+    	alert("Eayyahhh");
 
     } 
 }
