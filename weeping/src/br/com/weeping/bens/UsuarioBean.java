@@ -14,7 +14,7 @@ import br.com.weeping.entity.Usuario;
 import br.com.weeping.service.UsuarioService;
 
 @ViewScoped
-@ManagedBean(name = "usuarioBean")
+@ManagedBean(name = "usuariobean")
 
 
 // a cada metodo que fomos utilizando , adicione um comentario encima do campo com o nome da paggina que foi utilizado
@@ -26,8 +26,8 @@ public class UsuarioBean {
 
 	public String salvarNovoUsuario() {
 		usuarioDao.salvar(usuario);
-//		carregarUsuarios();
-		return "";
+//	carregarUsuarios();
+		return "../";
 	}
 
 	public String novaInstancia() {
@@ -40,7 +40,7 @@ public class UsuarioBean {
 	public String removerUsuario() {
 		usuarioDao.remove(usuario.getIdUsuario());
 		usuario = new Usuario();
-//		carregarUsuarios();
+//	carregarUsuarios();
 		return "";
 	}
 
