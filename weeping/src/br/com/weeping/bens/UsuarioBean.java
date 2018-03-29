@@ -23,7 +23,7 @@ public class UsuarioBean {
 	private Usuario usuario ;
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	private UsuarioService usuarioDao = new UsuarioService();
-	private boolean aceitarTermos = false;
+	private boolean aceitarTermos;
 
 	public String salvarNovoUsuario() {
 		usuarioDao.salvar(usuario);
@@ -35,6 +35,7 @@ public class UsuarioBean {
 		usuario = new Usuario();
 		login = new Login();
 		login.setUsuario(usuario);
+		aceitarTermos = false;
 		return "";
 	}
 
@@ -83,7 +84,9 @@ public class UsuarioBean {
 	public void setAceitarTermos(boolean aceitarTermos) {
 		this.aceitarTermos = aceitarTermos;
 	}
+	
 
+	
 	
 
 	/*public boolean permiteAcesso(String acesso) {
