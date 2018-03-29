@@ -78,7 +78,7 @@
                                 <div class="col-md-8">
                                     <h:inputText id="loginid" name="login" type="text"
                                            placeholder="use para entrar no site" class="form-control input-md"
-                                            value="#{usuariobean.login.login}"/>
+                                            value="#{usuariobean.usuario.login.login}"/>
                                 </div>
                             </div>
 
@@ -87,7 +87,7 @@
                                 <label class="col-md-4 control-label" for="senha">Senha</label>
                                 <div class="col-md-8">
                                     <h:inputText id="senha" name="senha" type="password" placeholder="****************"
-                                           class="form-control input-md"  value="#{usuariobean.login.senha}"/>
+                                           class="form-control input-md"  value="#{usuariobean.usuario.login.senha}"/>
                                 </div>
                             </div>
 
@@ -188,14 +188,14 @@
 						<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModalLong">
                                 Clique aqui para ler os termos
                             </button>
+                            	<h:selectBooleanCheckbox id="aceitarTermos" value="#{usuariobean.aceitarTermos}" ></h:selectBooleanCheckbox>
                             <label>
-                            	<h:selectBooleanCheckbox id="aceitarTermos" value="#{usuarioBean.aceitarTermos}"></h:selectBooleanCheckbox>
                             	Aceito os termos
 							</label>
                         </fieldset>
 	                    <p id="confirmar" class="alinhamentoDeTexto"></p>
 	                    <h:commandButton  class="btn btn-block btn-secondary" onclick="validarCampos()" 
-	                    		 value = "Finalizar cadastro" action="#{usuarioBean.salvarNovoUsuario()}"/>
+	                    		 value = "Finalizar cadastro" action="#{usuariobean.salvarNovoUsuario()}"/>
 	                
                     </h:form>
                   </li>
@@ -233,10 +233,10 @@
             </div> 
             <h:form class="modal-footer">
                 <h:commandButton type="button" class="btn btn-danger" data-dismiss="modal" value="Rejeitar">
-                	<f:ajax event="click" listener="#{usuarioBean.setAceitarTermos(false)}" render=":botoes:aceitarTermos"  oncomplete="fecharmodal();return false"/>
+                	<f:ajax event="click" listener="#{usuariobean.setAceitarTermos(false)}" render=":botoes:aceitarTermos"  oncomplete="fecharmodal();return false"/>
                	</h:commandButton>
                 <h:commandButton type="button" class="btn btn-success" data-dismiss="modal" value="Concordo" >
-                	<f:ajax event="click" listener="#{usuarioBean.setAceitarTermos(true)}" render=":botoes" oncomplete="return false"/>
+                	<f:ajax event="click" listener="#{usuariobean.setAceitarTermos(true)}" render=":botoes" oncomplete="return false"/>
                	</h:commandButton>
 
             </h:form>
