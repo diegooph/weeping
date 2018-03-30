@@ -14,7 +14,7 @@ import br.com.weeping.entity.Usuario;
 import br.com.weeping.service.UsuarioService;
 
 @ViewScoped
-@ManagedBean(name = "usuarioBean")
+@ManagedBean(name = "usuariobean")
 
 
 // a cada metodo que fomos utilizando , adicione um comentario encima do campo com o nome da paggina que foi utilizado
@@ -23,25 +23,26 @@ public class UsuarioBean {
 	private Usuario usuario ;
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	private UsuarioService usuarioDao = new UsuarioService();
-	private boolean aceitarTermos = false;
+	private boolean aceitarTermos;
 
 	public String salvarNovoUsuario() {
 		usuarioDao.salvar(usuario);
-//		carregarUsuarios();
-		return "";
+//	carregarUsuarios();
+		return "../";
 	}
 
 	public String novaInstancia() {
 		usuario = new Usuario();
 		login = new Login();
 		login.setUsuario(usuario);
+		aceitarTermos = false;
 		return "";
 	}
 
 	public String removerUsuario() {
 		usuarioDao.remove(usuario.getIdUsuario());
 		usuario = new Usuario();
-//		carregarUsuarios();
+//	carregarUsuarios();
 		return "";
 	}
 
@@ -83,16 +84,11 @@ public class UsuarioBean {
 	public void setAceitarTermos(boolean aceitarTermos) {
 		this.aceitarTermos = aceitarTermos;
 	}
-
 	
 
-	/*public boolean permiteAcesso(String acesso) {
-		FacesContext context = FacesContext.getCurrentInstance();
-		ExternalContext externalContext = context.getExternalContext();
-		Usuario usuarioUser = (Usuario) externalContext.getSessionMap().get("usuarioLogado");
+	
+	
 
-		return usuarioUser.getPerfilUser().equals(acesso);
-		
-	}*/
+	
 
 }
