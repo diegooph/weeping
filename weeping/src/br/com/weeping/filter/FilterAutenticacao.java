@@ -13,11 +13,9 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-
-
 import br.com.weeping.entity.Login;
 
-@WebFilter(urlPatterns={"/*"})
+@WebFilter(urlPatterns = { "/*" })
 public class FilterAutenticacao implements Filter {
 
 	@Override
@@ -25,33 +23,35 @@ public class FilterAutenticacao implements Filter {
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
-		
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
+
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
-		
+
 		Login usuarioLogado = (Login) session.getAttribute("usuarioLogado");
-		
+
 		String url = req.getServletPath();
-		
-		if ((!url.equalsIgnoreCase("index.xhtml") && usuarioLogado == null )){
+
+		if ((!url.equalsIgnoreCase("index.xhtml") && usuarioLogado == null)
+				&& (!url.contains("/img/"))
+				&& (!url.contains("/css/"))
+				&& (!url.contains("/js/"))
+				// para cada linha ex:&& (!url.contains("/img/")) é adicionada um diretorio para o filtro nao bloquear
+				){
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.xhtml");
 			dispatcher.forward(request, response);
-			
-		}else {
-	
+
+		} else {
+
 			chain.doFilter(request, response);
 		}
-		
+
 	}
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-	
-		
+
 	}
-
-
 
 }
