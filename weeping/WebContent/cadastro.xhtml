@@ -188,15 +188,16 @@
 						<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModalLong">
                                 Clique aqui para ler os termos
                             </button>
-                            <label>
-                            	<h:selectBooleanCheckbox id="aceitarTermos" value="#{usuarioBean.aceitarTermos}"></h:selectBooleanCheckbox>
-                            	Aceito os termos
-							</label>
+                            <div style="text-align:center">
+                            <br/>
+                            	<h:selectBooleanCheckbox class="selectedbox" id="aceitarTermos" 
+                            		value="#{usuarioBean.aceitarTermos}" disabled="true"></h:selectBooleanCheckbox>
+                            	<h:outputLabel for="aceitarTermos">Eu li e aceito os termos</h:outputLabel>
+                           	</div>
                         </fieldset>
 	                    <p id="confirmar" class="alinhamentoDeTexto"></p>
 	                    <h:commandButton  class="btn btn-block btn-secondary" onclick="validarCampos()" 
-	                    		 value = "Finalizar cadastro" action="#{usuarioBean.salvarNovoUsuario()}"/>
-	                
+	                    		 value = "Finalizar cadastro" action="#{usuarioBean.salvarNovoUsuario()}"/>	                
                     </h:form>
                   </li>
             </ul>
@@ -232,11 +233,11 @@
                 <p>Não nos responsabilizamos pela política de privacidade ou conteúdo presente nesses mesmos sites.</p>
             </div> 
             <h:form class="modal-footer">
-                <h:commandButton type="button" class="btn btn-danger" data-dismiss="modal" value="Rejeitar">
-                	<f:ajax event="click" listener="#{usuarioBean.setAceitarTermos(false)}" render=":botoes:aceitarTermos"  oncomplete="fecharmodal();return false"/>
+                <h:commandButton class="btn btn-danger" value="Rejeitar" onclick="closeModal();">
+                	<f:ajax event="click" listener="#{usuarioBean.setAceitarTermos(false)}"  render=":botoes:aceitarTermos" execute="@this"/>
                	</h:commandButton>
-                <h:commandButton type="button" class="btn btn-success" data-dismiss="modal" value="Concordo" >
-                	<f:ajax event="click" listener="#{usuarioBean.setAceitarTermos(true)}" render=":botoes" oncomplete="return false"/>
+                <h:commandButton class="btn btn-success" value="Concordo" onclick="closeModal();">
+                	<f:ajax event="click" listener="#{usuarioBean.setAceitarTermos(true)}" render=":botoes"/>
                	</h:commandButton>
 
             </h:form>

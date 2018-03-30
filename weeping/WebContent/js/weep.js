@@ -1,6 +1,11 @@
 //Verificação para campo texto / contagem de caracteres e frases absurdas.
 
 
+function closeModal(){
+	
+	$("#exampleModalLong").modal('hide');
+}
+
 $(document).on("input", "#textoprincipal", function () {
     var contador = 0;
     var cd = $(this).val().length;

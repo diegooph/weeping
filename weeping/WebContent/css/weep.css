@@ -168,6 +168,17 @@ font-size: 12px;
 
 }
 
+.selectedbox{
+	
+width:100px;
+height:100px;
+position:absolute;
+top:50%;
+left:50%;
+
+	
+}
+
 .card.hovercardp .infop .titlep {
     margin-bottom: 4px;
     font-size: 24px;
