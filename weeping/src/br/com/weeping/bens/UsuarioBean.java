@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 import br.com.weeping.entity.Login;
 import br.com.weeping.entity.Usuario;
@@ -22,6 +23,7 @@ public class UsuarioBean {
 	private Login login ;
 	private Usuario usuario ;
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
+	@Inject
 	private UsuarioService usuarioDao = new UsuarioService();
 	private boolean aceitarTermos;
 
