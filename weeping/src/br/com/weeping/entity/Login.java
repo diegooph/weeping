@@ -24,6 +24,7 @@ public class Login {
 	private String login;
 	private String senha;
 	private PermisaoEnum permisaoUsuario;
+	private String perfilUser;
 
 	public Login() {
 		super();
@@ -34,6 +35,14 @@ public class Login {
 		super();
 		this.login = login;
 		this.senha = senha;
+	}
+	
+	public void setPerfilUser(String perfilUser) {
+		this.perfilUser = perfilUser;
+	}
+	
+	public String getPerfilUser() {
+		return perfilUser;
 	}
 
 	public Usuario getUsuario() {

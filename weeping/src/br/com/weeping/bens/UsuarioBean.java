@@ -89,13 +89,6 @@ public class UsuarioBean {
 	
 	
 
-	/*public boolean permiteAcesso(String acesso) {
-		FacesContext context = FacesContext.getCurrentInstance();
-		ExternalContext externalContext = context.getExternalContext();
-		Usuario usuarioUser = (Usuario) externalContext.getSessionMap().get("usuarioLogado");
-
-		return usuarioUser.getPerfilUser().equals(acesso);
-		
-	}*/
+	
 
 }
