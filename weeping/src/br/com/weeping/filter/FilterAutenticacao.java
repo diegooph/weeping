@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import br.com.weeping.entity.Login;
 
-@WebFilter(urlPatterns = { "/trocar por *" })
+@WebFilter(urlPatterns = { "/*" })
 public class FilterAutenticacao implements Filter {
 
 	@Override
@@ -33,10 +33,11 @@ public class FilterAutenticacao implements Filter {
 
 		String url = req.getServletPath();
 
-		if ((!url.equalsIgnoreCase("index.xhtml") && usuarioLogado == null)
+		if ((!url.equalsIgnoreCase("index.xhtml") &&  usuarioLogado == null)
 				&& (!url.contains("/img/"))
 				&& (!url.contains("/css/"))
 				&& (!url.contains("/js/"))
+				&& (!url.contains("cadastro.xhtml"))
 				// para cada linha ex:&& (!url.contains("/img/")) é adicionada um diretorio para o filtro nao bloquear
 				){
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.xhtml");

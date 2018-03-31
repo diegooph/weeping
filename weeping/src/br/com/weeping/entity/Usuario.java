@@ -1,6 +1,8 @@
 package br.com.weeping.entity;
 
 import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,7 +26,7 @@ public class Usuario {
 	private String nome;
 	private String sobrenome;
 	private String email;
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST.REFRESH)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Endereco endereco;
 

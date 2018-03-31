@@ -17,43 +17,43 @@ import br.com.weeping.service.UsuarioService;
 @ViewScoped
 @ManagedBean(name = "usuariobean")
 
-
-// a cada metodo que fomos utilizando , adicione um comentario encima do campo com o nome da paggina que foi utilizado
+// a cada metodo que fomos utilizando , adicione um comentario encima do campo
+// com o nome da paggina que foi utilizado
 public class UsuarioBean {
-	private Login login ;
-	private Usuario usuario ;
+	
+	private Usuario usuario;
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
+	
 	@Inject
 	private UsuarioService usuarioDao = new UsuarioService();
-	private boolean aceitarTermos;
+	
+	
 
 	public String salvarNovoUsuario() {
 		usuarioDao.salvar(usuario);
-//	carregarUsuarios();
+		// salva e faz update na tabela usuario nao afetando login.
+		
 		return "../";
 	}
 
 	public String novaInstancia() {
 		usuario = new Usuario();
-		login = new Login();
-		login.setUsuario(usuario);
-		aceitarTermos = false;
+		
 		return "";
 	}
 
 	public String removerUsuario() {
 		usuarioDao.remove(usuario.getIdUsuario());
 		usuario = new Usuario();
-//	carregarUsuarios();
+		// carregarUsuarios();
 		return "";
 	}
 
-//	@PostConstruct
-//	public void carregarUsuarios() {
-//		usuarioDao.getUsuarios();
-//	}
-//	metodo para carregar a lista dos usuarios apos o construtor
-	
+	// @PostConstruct
+	// public void carregarUsuarios() {
+	// usuarioDao.getUsuarios();
+	// }
+	// metodo para carregar a lista dos usuarios apos o construtor
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -79,18 +79,5 @@ public class UsuarioBean {
 		return usuarios;
 	}
 
-	public boolean isAceitarTermos() {
-		return aceitarTermos;
-	}
-
-	public void setAceitarTermos(boolean aceitarTermos) {
-		this.aceitarTermos = aceitarTermos;
-	}
-	
-
-	
-	
-
-	
 
 }

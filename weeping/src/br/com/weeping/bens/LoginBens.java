@@ -6,8 +6,11 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import br.com.weeping.entity.Endereco;
 import br.com.weeping.entity.Login;
+import br.com.weeping.entity.Usuario;
 import br.com.weeping.service.LoginService;
+import br.com.weeping.service.UsuarioService;
 
 @ViewScoped
 @ManagedBean(name = "loginbean")
@@ -18,6 +21,26 @@ public class LoginBens {
 	@Inject
 	private LoginService daologin = new LoginService();
 	private Login login = new Login();
+	private Usuario usuario = new Usuario();
+	private Endereco endereco = new Endereco();
+	@Inject
+	private UsuarioService usuarioDao = new UsuarioService();
+	private boolean aceitarTermos;
+
+	public String SalvarLogin() {
+		usuario.setEndereco(endereco);
+		login.setUsuario(usuario);
+		daologin.salvar(login);
+
+		return "";
+	}
+
+	public String novaInstancia() {
+		usuario = new Usuario();
+		login = new Login();
+		aceitarTermos = false;
+		return "";
+	}
 
 	public String logar() {
 
@@ -43,6 +66,54 @@ public class LoginBens {
 
 		return loginUser.getPerfilUser().equals(acesso);
 
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public LoginService getDaologin() {
+		return daologin;
+	}
+
+	public void setDaologin(LoginService daologin) {
+		this.daologin = daologin;
+	}
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public UsuarioService getUsuarioDao() {
+		return usuarioDao;
+	}
+
+	public void setUsuarioDao(UsuarioService usuarioDao) {
+		this.usuarioDao = usuarioDao;
+	}
+
+	public boolean isAceitarTermos() {
+		return aceitarTermos;
+	}
+
+	public void setAceitarTermos(boolean aceitarTermos) {
+		this.aceitarTermos = aceitarTermos;
 	}
 
 }

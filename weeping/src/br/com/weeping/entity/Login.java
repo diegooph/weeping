@@ -1,5 +1,6 @@
 package br.com.weeping.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,20 +19,20 @@ public class Login {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "login_seq")
 	private Integer idLogin;
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST.REFRESH )
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Usuario usuario;
 	private String login;
 	private String senha;
-	private PermisaoEnum permisaoUsuario;
+	
 	private String perfilUser;
 
 	public Login() {
 		super();
-		this.permisaoUsuario = permisaoUsuario.USUARIO;
+		
 	}
 
-	public Login(String login, String senha, PermisaoEnum permisaoUsuario) {
+	public Login(String login, String senha) {
 		super();
 		this.login = login;
 		this.senha = senha;
@@ -77,12 +78,5 @@ public class Login {
 		this.senha = senha;
 	}
 
-	public PermisaoEnum getPermisaoUsuario() {
-		return permisaoUsuario;
-	}
-
-	public void setPermisaoUsuario(PermisaoEnum permisaoUsuario) {
-		this.permisaoUsuario = permisaoUsuario;
-	}
-
+	
 }
