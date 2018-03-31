@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import br.com.weeping.entity.Login;
 
-@WebFilter(urlPatterns = { "/*" })
+@WebFilter(urlPatterns = { "/trocar por *" })
 public class FilterAutenticacao implements Filter {
 
 	@Override
