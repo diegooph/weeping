@@ -76,7 +76,7 @@ public class MensagemBens {
 		mensagemDao.salvar(mensagemprincipal);
 		post.setMensagem(mensagemprincipal);
 		postDao.salvar(post);
-		novaInstancia();
+		mensagemprincipal = null;
 		return "";
 	}
 

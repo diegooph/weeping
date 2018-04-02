@@ -115,7 +115,8 @@
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
 				<div class="row">
 					<div class="col-12 ">
-						<h:form>
+						<h:form id="panel">
+						
 							<ul class="list-group">
 
 								<li class="list-group-item" id="texto-principal">
@@ -135,11 +136,13 @@
 
 								<li>
 									<p:commandButton class="buttonPost" style="vertical-align: middle"
-										actionListener="#{mensagenbean.novoPost()}" value="Chorar"/>
+										actionListener="#{mensagenbean.novoPost()}" process="@this" update="panel" value="Chorar"/>
 										
 									
 									<p:commandButton class="buttonCancel" style="vertical-align: middle"
-										actionListener="#{mensagenbean.novaInstancia()}"  value="Desisistir" />
+										actionListener="#{mensagenbean.novaInstancia()}"  update="panel" value="Desisistir" process="@this" />
+								
+ 
 								
 								</li>
 							</ul>
