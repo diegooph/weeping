@@ -5,12 +5,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-
 import br.com.weeping.entity.Login;
-import br.com.weeping.entity.Usuario;
 
 @Stateless
 public class LoginService {
@@ -21,6 +16,7 @@ public class LoginService {
 	public Collection<Login> getUsuarios() {
 
 		Collection<Login> resultList = em.createQuery("SELECT a from Login a", Login.class).getResultList();
+
 		return resultList;
 	}
 
@@ -40,11 +36,13 @@ public class LoginService {
 		} else {
 			update(login);
 		}
+
 	}
 
 	private void persist(Login login) {
 
 		em.persist(login);
+
 	}
 
 	private void update(Login login) {
@@ -53,8 +51,9 @@ public class LoginService {
 	}
 
 	public void remove(int id) {
-// apaga tudo referente ao usuario e login
+		// apaga tudo referente ao usuario e login
 		em.remove(em.find(Login.class, id));
+
 	}
 
 }

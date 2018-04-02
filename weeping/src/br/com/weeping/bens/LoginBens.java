@@ -23,6 +23,7 @@ public class LoginBens {
 	private Login login = new Login();
 	private Usuario usuario = new Usuario();
 	private Endereco endereco = new Endereco();
+	
 	@Inject
 	private UsuarioService usuarioDao = new UsuarioService();
 	private boolean aceitarTermos;

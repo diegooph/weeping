@@ -5,8 +5,6 @@ import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import br.com.weeping.entity.Mensagem;
 import br.com.weeping.entity.Post;
 
 @Stateless
@@ -17,7 +15,7 @@ public class PostService {
 
 	public Collection<Post> getPosts() {
 
-		Collection<Post> resultList = em.createQuery("SELECT p from post p", Post.class).getResultList();
+		Collection<Post> resultList = em.createQuery("SELECT p from Post p", Post.class).getResultList();
 		return resultList;
 	}
 

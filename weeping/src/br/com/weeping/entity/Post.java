@@ -1,7 +1,7 @@
 package br.com.weeping.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,19 +15,18 @@ import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @SequenceGenerator(name = "Post_seq", sequenceName = "Post_seq", allocationSize = 1, initialValue = 1)
-// @DiscriminatorValue(value="P")
 public class Post {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Post_seq")
 	private Integer idPost;
-
-	@ManyToOne()
+	@ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name = "id_usuario_destinatario", referencedColumnName = "idUsuario")
 	private Usuario id_usuario_destinatario;
 
 	@JoinColumn(name = "id_mensagem_post", referencedColumnName = "idMensagem")
-	@OneToOne()
-	@OnDelete(action = OnDeleteAction.CASCADE)
+	@OneToOne(fetch= FetchType.EAGER)
+	@OnDelete(action = OnDeleteAction.CASCADE )
 	private Mensagem mensagem;
 
 	public Mensagem getMensagem() {

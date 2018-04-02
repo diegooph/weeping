@@ -78,6 +78,11 @@ public class Mensagem {
 		this.likes = likes;
 	}
 
+	public Mensagem() {
+		super();
+		mensagem = "";
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

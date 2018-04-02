@@ -1,13 +1,9 @@
 package br.com.weeping.service;
 
 import java.util.Collection;
-
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import org.hibernate.sql.Update;
-
 import br.com.weeping.entity.Mensagem;
 
 @Stateless

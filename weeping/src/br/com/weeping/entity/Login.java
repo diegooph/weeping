@@ -19,7 +19,7 @@ public class Login {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "login_seq")
 	private Integer idLogin;
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST.REFRESH)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Usuario usuario;
 	private String login;

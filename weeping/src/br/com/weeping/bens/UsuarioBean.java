@@ -38,7 +38,6 @@ public class UsuarioBean {
 
 	public String novaInstancia() {
 		usuario = new Usuario();
-		
 		return "";
 	}
 

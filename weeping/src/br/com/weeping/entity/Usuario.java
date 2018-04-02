@@ -26,15 +26,15 @@ public class Usuario {
 	private String nome;
 	private String sobrenome;
 	private String email;
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST.REFRESH)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Endereco endereco;
 
-	@OneToMany(mappedBy = "id_usuario_remetente", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "id_usuario_remetente", fetch = FetchType.EAGER)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Collection<Mensagem> mensagens;
 
-	@OneToMany(mappedBy = "id_usuario_destinatario", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "id_usuario_destinatario", fetch= FetchType.EAGER)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Collection<Post> posts;
 
@@ -50,6 +50,22 @@ public class Usuario {
 		super();
 		this.nome = nome;
 
+	}
+
+	public Collection<Mensagem> getMensagens() {
+		return mensagens;
+	}
+
+	public void setMensagens(Collection<Mensagem> mensagens) {
+		this.mensagens = mensagens;
+	}
+
+	public Collection<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(Collection<Post> posts) {
+		this.posts = posts;
 	}
 
 	public Collection<Usuario> getListaAmigos() {

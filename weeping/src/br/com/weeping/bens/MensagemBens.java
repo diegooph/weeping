@@ -1,8 +1,11 @@
 package br.com.weeping.bens;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
@@ -21,64 +24,67 @@ import br.com.weeping.service.UsuarioService;
 
 @ViewScoped
 @ManagedBean(name = "mensagenbean")
-
+// @ApplicationScoped
+//
 // a cada metodo que fomos utilizando , adicione um comentario encima do campo
 // com o nome da paggina que foi utilizado
 public class MensagemBens {
 	private Login login;
-	// usuario dono da pagina null = principal ... ou seja vai pro proprio
-	// usuario
 	private Usuario usuario;
 	private Post post;
-	private Mensagem mensagem;
+	private Mensagem mensagemprincipal;
 	private Resposta resposta;
 	private Mensagem mensagemAbordada;
 
-	private List<Post> posts = new ArrayList<Post>();
+	@Inject
+	private PostService postDao = new PostService();
 
 	@Inject
 	private UsuarioService usuarioDao = new UsuarioService();
+
 	@Inject
 	private MensagemService mensagemDao = new MensagemService();
-	@Inject
-	private PostService postDao = new PostService();
+
 	@Inject
 	private RespostaService resDao = new RespostaService();
 
-	public MensagemBens() {
-		super();
-		this.post = new Post();
-		this.mensagem = new Mensagem();
-		this.mensagemAbordada = new Mensagem();
-		this.resposta = new Resposta();
-		this.posts = (List<Post>) postDao.getPosts(); 
+	private Collection<Post> posts;
+
+	@PostConstruct
+	public void novaInstancia() {
+		login = new Login();
+		usuario = new Usuario();
+		post = new Post();
+		mensagemprincipal = new Mensagem();
+		resposta = new Resposta();
+		mensagemAbordada = new Mensagem();
+
 	}
 
-	public void getUsuario() {
+	public Login getUsuarioLogado() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		ExternalContext externalContext = context.getExternalContext();
-		login = (Login) externalContext.getSessionMap().get("usuarioLogado");
+		return (Login) externalContext.getSessionMap().get("usuarioLogado");
 
 	}
 
 	public String novoPost() {
-		if (usuario == null) {
-			post.setId_usuario_destinatario(login.getUsuario());
-		} else {
-			post.setId_usuario_destinatario(usuario);
-		}
-		mensagem.setId_usuario_remetente(login.getUsuario());
-		mensagemDao.salvar(mensagem);
-		post.setMensagem(mensagem);
+
+		login = getUsuarioLogado();
+		post.setId_usuario_destinatario(getUsuarioLogado().getUsuario());
+		mensagemprincipal.setId_usuario_remetente(getUsuarioLogado().getUsuario());
+		mensagemDao.salvar(mensagemprincipal);
+		post.setMensagem(mensagemprincipal);
 		postDao.salvar(post);
+		novaInstancia();
 		return "";
 	}
 
 	public String novaResposta() {
 
-		mensagemDao.salvar(mensagem);
+		mensagemDao.salvar(mensagemprincipal);
 		resposta.setId_mensagem_abordada(mensagemAbordada);
-		resposta.setId_mensagem_resposta(mensagem);
+		resposta.setId_mensagem_resposta(mensagemprincipal);
 		resDao.salvar(resposta);
 		return "";
 	}
@@ -91,6 +97,14 @@ public class MensagemBens {
 		this.login = login;
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	public Post getPost() {
 		return post;
 	}
@@ -99,12 +113,12 @@ public class MensagemBens {
 		this.post = post;
 	}
 
-	public Mensagem getMensagem() {
-		return mensagem;
+	public Mensagem getMensagemprincipal() {
+		return mensagemprincipal;
 	}
 
-	public void setMensagem(Mensagem mensagem) {
-		this.mensagem = mensagem;
+	public void setMensagemprincipal(Mensagem mensagemprincipal) {
+		this.mensagemprincipal = mensagemprincipal;
 	}
 
 	public Resposta getResposta() {
@@ -123,16 +137,46 @@ public class MensagemBens {
 		this.mensagemAbordada = mensagemAbordada;
 	}
 
-	public List<Post> getPosts() {
+	public PostService getPostDao() {
+		return postDao;
+	}
+
+	public void setPostDao(PostService postDao) {
+		this.postDao = postDao;
+	}
+
+	public UsuarioService getUsuarioDao() {
+		return usuarioDao;
+	}
+
+	public void setUsuarioDao(UsuarioService usuarioDao) {
+		this.usuarioDao = usuarioDao;
+	}
+
+	public MensagemService getMensagemDao() {
+		return mensagemDao;
+	}
+
+	public void setMensagemDao(MensagemService mensagemDao) {
+		this.mensagemDao = mensagemDao;
+	}
+
+	public RespostaService getResDao() {
+		return resDao;
+	}
+
+	public void setResDao(RespostaService resDao) {
+		this.resDao = resDao;
+	}
+
+	public Collection<Post> getPosts() {
 		return posts;
 	}
 
-	public void setPosts(List<Post> posts) {
+	public void setPosts(Collection<Post> posts) {
 		this.posts = posts;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+
 
 }
