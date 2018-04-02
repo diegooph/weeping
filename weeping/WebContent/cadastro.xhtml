@@ -313,7 +313,7 @@
 					<p>Não nos responsabilizamos pela política de privacidade ou
 						conteúdo presente nesses mesmos sites.</p>
 				</div>
-				<h:form class="modal-footer">
+				<div class="modal-footer">
 					<h:commandButton class="btn btn-danger" value="Rejeitar"
 						onclick="closeModal();">
 						<f:ajax event="click"
@@ -326,7 +326,7 @@
 							listener="#{loginbean.setAceitarTermos(true)}" render=":botoes " />
 					</h:commandButton>
 
-				</h:form>
+				</div>
 			</div>
 		</div>
 	</div>

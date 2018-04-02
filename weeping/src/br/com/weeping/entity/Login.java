@@ -19,17 +19,17 @@ public class Login {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "login_seq")
 	private Integer idLogin;
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST.REFRESH )
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST.REFRESH)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Usuario usuario;
 	private String login;
 	private String senha;
-	
+
 	private String perfilUser;
 
 	public Login() {
 		super();
-		
+
 	}
 
 	public Login(String login, String senha) {
@@ -37,11 +37,11 @@ public class Login {
 		this.login = login;
 		this.senha = senha;
 	}
-	
+
 	public void setPerfilUser(String perfilUser) {
 		this.perfilUser = perfilUser;
 	}
-	
+
 	public String getPerfilUser() {
 		return perfilUser;
 	}
@@ -78,5 +78,4 @@ public class Login {
 		this.senha = senha;
 	}
 
-	
 }

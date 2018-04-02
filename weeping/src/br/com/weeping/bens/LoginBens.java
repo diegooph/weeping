@@ -32,7 +32,7 @@ public class LoginBens {
 		login.setUsuario(usuario);
 		daologin.salvar(login);
 
-		return "";
+		return "login.xhtml";
 	}
 
 	public String novaInstancia() {
@@ -53,10 +53,10 @@ public class LoginBens {
 			ExternalContext externalContext = context.getExternalContext();
 			externalContext.getSessionMap().put("usuarioLogado", loginUser);
 			// adicionar a pagina de entrada do usuario
-			return "";
+			return "principal.xhml";
 		}
 
-		return "index.jsf";
+		return "";
 	}
 
 	public boolean permiteAcesso(String acesso) {

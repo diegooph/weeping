@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<html class="bgfundo" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
+<html class="bgfundo" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -26,7 +26,7 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li>
-                    <a class="nav-link" href="index">Inicio <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="principal.xhtml">Inicio <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Weep's<span class="sr-only">(current)</span></a>
@@ -123,6 +123,19 @@
                 </div>
             </div>
         </div>
+        <h:dataTable value="#{mensagenbean.posts}" var="u">
+
+                <h:column>
+                    <f:facet name="header">Order No</f:facet>
+                    #{u.id}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Product Name</f:facet>
+                    #{u.mensagem.mensagem}
+                </h:column>
+
+    </h:dataTable>
         <!-- Aqui termina a area de postagem -->
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <!-- Aqui pode por algum conteudo, mas por hora só usarei para separar as bordas -->
