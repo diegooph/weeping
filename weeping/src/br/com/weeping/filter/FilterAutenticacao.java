@@ -32,16 +32,21 @@ public class FilterAutenticacao implements Filter {
 		Login usuarioLogado = (Login) session.getAttribute("usuarioLogado");
 
 		String url = req.getServletPath();
-
-		if ((!url.equalsIgnoreCase("index.xhtml") &&  usuarioLogado == null)
+		// para cada linha ex:&& (!url.contains("/img/")) é adicionada um
+		// diretorio para o filtro nao bloquear
+		if (((usuarioLogado == null)
 				&& (!url.contains("/img/"))
-				&& (!url.contains("/css/"))
+				&& (!url.contains("/css/")) 
 				&& (!url.contains("/js/"))
-				&& (!url.equalsIgnoreCase("cadastro.xhtml"))
+				&& (!url.equalsIgnoreCase("cadastro.xhtml")) 
 				&& (!url.equalsIgnoreCase("login.xhtml"))
 				&& (!url.equalsIgnoreCase("principal.xhml"))
-				// para cada linha ex:&& (!url.contains("/img/")) é adicionada um diretorio para o filtro nao bloquear
-				){
+		) 
+				|| ((!url.equalsIgnoreCase("cadastro.xhtml"))
+				|| (!url.equalsIgnoreCase("index.xhtml"))
+				
+
+		)) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("login.xhtml");
 			dispatcher.forward(request, response);
 
