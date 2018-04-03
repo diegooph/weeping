@@ -3,14 +3,12 @@ package br.com.weeping.bens;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-import br.com.weeping.entity.Login;
+import org.primefaces.model.UploadedFile;
+
 import br.com.weeping.entity.Usuario;
 import br.com.weeping.service.UsuarioService;
 
@@ -20,19 +18,18 @@ import br.com.weeping.service.UsuarioService;
 // a cada metodo que fomos utilizando , adicione um comentario encima do campo
 // com o nome da paggina que foi utilizado
 public class UsuarioBean {
-	
+
 	private Usuario usuario;
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
-	
+
 	@Inject
 	private UsuarioService usuarioDao = new UsuarioService();
-	
-	
+	private UploadedFile file;
 
 	public String salvarNovoUsuario() {
 		usuarioDao.salvar(usuario);
 		// salva e faz update na tabela usuario nao afetando login.
-		
+
 		return "../";
 	}
 
@@ -48,11 +45,13 @@ public class UsuarioBean {
 		return "";
 	}
 
-	// @PostConstruct
-	// public void carregarUsuarios() {
-	// usuarioDao.getUsuarios();
-	// }
-	// metodo para carregar a lista dos usuarios apos o construtor
+	public UploadedFile getFile() {
+		return file;
+	}
+
+	public void setFile(UploadedFile file) {
+		this.file = file;
+	}
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -77,6 +76,5 @@ public class UsuarioBean {
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
-
 
 }

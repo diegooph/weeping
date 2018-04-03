@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -34,13 +35,16 @@ public class Usuario {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Collection<Mensagem> mensagens;
 
-	@OneToMany(mappedBy = "id_usuario_destinatario", fetch= FetchType.EAGER)
+	@OneToMany(mappedBy = "id_usuario_destinatario", fetch = FetchType.EAGER)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Collection<Post> posts;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "listaAmigo")
 	private Collection<Usuario> listaAmigos;
+
+	@Lob
+	private byte[] image;
 
 	public Usuario() {
 		super();
@@ -50,6 +54,14 @@ public class Usuario {
 		super();
 		this.nome = nome;
 
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 
 	public Collection<Mensagem> getMensagens() {
