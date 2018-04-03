@@ -37,7 +37,7 @@ public class MensagemBens {
 	private Mensagem mensagemAbordada;
 
 	@Inject
-	private PostService postDao = new PostService();
+	private PostService postDao;
 
 	@Inject
 	private UsuarioService usuarioDao = new UsuarioService();
@@ -55,10 +55,11 @@ public class MensagemBens {
 		login = new Login();
 		usuario = new Usuario();
 		post = new Post();
-		mensagemprincipal = new Mensagem();
 		resposta = new Resposta();
 		mensagemAbordada = new Mensagem();
-
+		mensagemprincipal = new Mensagem();
+		System.out.println("Passo dfsgijhnfaodhgoshgoihfsduo + " + mensagemprincipal.getMensagem());
+		posts= postDao.getPosts();
 	}
 
 	public Login getUsuarioLogado() {

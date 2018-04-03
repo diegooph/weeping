@@ -39,7 +39,8 @@ public class FilterAutenticacao implements Filter {
 				&& (!url.contains("/js/"))
 				&& (!url.contains("cadastro.xhtml"))
 				&& (!url.contains("login.xhtml"))
-				&& (!url.contains("principal.xhml"))
+				&& (!url.contains("tests"))
+				&& (!url.contains("principal.xhtml"))
 				// para cada linha ex:&& (!url.contains("/img/")) é adicionada um diretorio para o filtro nao bloquear
 				){
 			RequestDispatcher dispatcher = request.getRequestDispatcher("login.xhtml");

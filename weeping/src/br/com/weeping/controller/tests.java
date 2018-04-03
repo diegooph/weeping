@@ -1,6 +1,7 @@
 package br.com.weeping.controller;
 
 import java.io.IOException;
+import java.util.Collection;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -41,6 +42,7 @@ public class tests extends HttpServlet {
 
 	public tests() {
 		super();
+		
 		// TODO Auto-generated constructor stub
 	}
 
@@ -50,8 +52,11 @@ public class tests extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+	Collection<Post> lista=servpos.getPosts();
+	for (Post post : lista) {
+		response.getWriter().append(post.getMensagem().getMensagem() + " passo").append(request.getContextPath());
+	}
 	
-		response.getWriter().append("aria detestes fique longe desse bug").append(request.getContextPath());
 
 	}
 
