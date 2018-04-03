@@ -116,18 +116,16 @@
 				<div class="row">
 					<div class="col-12 ">
 						<h:form id="panel">
-						
+
 							<ul class="list-group">
 
-								<li class="list-group-item" id="texto-principal">
-								
-								<p:inputTextarea
+								<li class="list-group-item" id="texto-principal"><p:inputTextarea
 										widgetVar="editor1"
 										value="#{mensagenbean.mensagemprincipal.mensagem}"
 										class="form-control textoprincipal alinhamentoDeTexto"
 										id="textoprincipal"
 										placeholder="Você pode mostrar ao mundo sua raiva, concentre-a toda aqui!"
-										maxlength="300"  counter="caracteres"
+										maxlength="300" counter="caracteres"
 										counterTemplate="Restam {0} Caracteres" autoResize="true" />
 
 									<br /> <i class="textoPequeno" id="referencia">...</i> <i
@@ -135,22 +133,22 @@
 											id="caracteres" value="" /></i></li>
 
 								<li>
-									<p:commandButton class="buttonPost" style="vertical-align: middle"
-										actionListener="#{mensagenbean.novoPost()}" process="@this" update="panel" value="Chorar"/>
+								<p:commandButton class="buttonPost"
+										style="vertical-align: middle"
+										action="#{mensagenbean.novoPost()}" 
+										update="listaMensagem, panel" value="Chorar" /> 
 										
-									
-									<p:commandButton class="buttonCancel" style="vertical-align: middle"
-										actionListener="#{mensagenbean.novaInstancia()}"  update="panel" value="Desisistir" process="@this" />
-								
- 
-								
-								</li>
+										<p:commandButton
+										class="buttonCancel" style="vertical-align: middle"
+										action="#{mensagenbean.novaInstancia()}"
+										update="listaMensagem , panel" value="Desisistir"  /></li>
 							</ul>
 							<br />
-						</h:form>
+				
 						<ul class="list-group">
-							<li class="list-group-item" id="texto-PostPrincipal"><h:form>
-									<p:dataScroller value="#{mensagenbean.posts}" var="pos"
+							<li class="list-group-item" id="texto-PostPrincipal">
+							
+									<p:dataScroller id="listaMensagem" value="#{mensagenbean.posts}" var="pos"
 										chunkSize="10">
 										<f:facet name="header">
             Role paga baixo para ler as mensagens
@@ -179,8 +177,10 @@
 											</p:outputPanel>
 										</h:panelGrid>
 									</p:dataScroller>
-								</h:form></li>
+							
+								</li>
 						</ul>
+								</h:form>
 					</div>
 				</div>
 			</div>

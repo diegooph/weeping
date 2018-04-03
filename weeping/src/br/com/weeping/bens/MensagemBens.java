@@ -58,7 +58,6 @@ public class MensagemBens {
 		resposta = new Resposta();
 		mensagemAbordada = new Mensagem();
 		mensagemprincipal = new Mensagem();
-		System.out.println("Passo dfsgijhnfaodhgoshgoihfsduo + " + mensagemprincipal.getMensagem());
 		posts= postDao.getPosts();
 	}
 
@@ -77,7 +76,9 @@ public class MensagemBens {
 		mensagemDao.salvar(mensagemprincipal);
 		post.setMensagem(mensagemprincipal);
 		postDao.salvar(post);
-		mensagemprincipal = null;
+		mensagemprincipal = new Mensagem();
+		post = new Post();
+		posts= postDao.getPosts();
 		return "";
 	}
 
