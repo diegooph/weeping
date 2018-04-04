@@ -1,5 +1,6 @@
 package br.com.weeping.entity;
 
+import java.io.ByteArrayInputStream;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -16,6 +17,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
+
+
 
 @Entity
 @SequenceGenerator(name = "usuario_seq", sequenceName = "usuario_seq", allocationSize = 1, initialValue = 1)
@@ -55,13 +60,18 @@ public class Usuario {
 		this.nome = nome;
 
 	}
-
 	public byte[] getImage() {
 		return image;
+	}
+	public StreamedContent getImageStreamed() {
+		StreamedContent imagem;
+		imagem = new DefaultStreamedContent(new ByteArrayInputStream(this.image));
+		return imagem;
 	}
 
 	public void setImage(byte[] image) {
 		this.image = image;
+		
 	}
 
 	public Collection<Mensagem> getMensagens() {

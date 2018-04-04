@@ -1,11 +1,7 @@
 package br.com.weeping.bens;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
@@ -58,7 +54,7 @@ public class MensagemBens {
 		resposta = new Resposta();
 		mensagemAbordada = new Mensagem();
 		mensagemprincipal = new Mensagem();
-		posts= postDao.getPosts();
+		posts = postDao.getPosts();
 	}
 
 	public Login getUsuarioLogado() {
@@ -78,7 +74,7 @@ public class MensagemBens {
 		postDao.salvar(post);
 		mensagemprincipal = new Mensagem();
 		post = new Post();
-		posts= postDao.getPosts();
+		posts = postDao.getPosts();
 		return "";
 	}
 
@@ -178,7 +174,5 @@ public class MensagemBens {
 	public void setPosts(Collection<Post> posts) {
 		this.posts = posts;
 	}
-
-
 
 }
