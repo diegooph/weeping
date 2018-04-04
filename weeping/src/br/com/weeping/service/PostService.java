@@ -15,7 +15,7 @@ public class PostService {
 
 	public Collection<Post> getPosts() {
 
-		Collection<Post> resultList = em.createQuery("SELECT p from Post p", Post.class).getResultList();
+		Collection<Post> resultList = em.createQuery("SELECT p from Post p ORDER BY p.idPost DESC" , Post.class).getResultList();
 		return resultList;
 	}
 

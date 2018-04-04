@@ -14,7 +14,7 @@ public class MensagemService {
 
 	public Collection<Mensagem> getMensagems() {
 
-		Collection<Mensagem> resultList = emm.createQuery("SELECT m from mensagem m", Mensagem.class).getResultList();
+		Collection<Mensagem> resultList = emm.createQuery("SELECT m from mensagem m ORDER BY m.idMensagem DESC", Mensagem.class).getResultList();
 		return resultList;
 	}
 
