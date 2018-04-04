@@ -132,23 +132,19 @@
 									class="textoPequeno textoNaDireita"> <h:outputText
 											id="caracteres" value="" /></i></li>
 
-								<li>
-								<p:commandButton class="buttonPost"
+								<li><p:commandButton class="buttonPost"
 										style="vertical-align: middle"
-										action="#{mensagenbean.novoPost()}" 
-										update="listaMensagem, panel" value="Chorar" /> 
-										
-										<p:commandButton
+										action="#{mensagenbean.novoPost()}"
+										update="listaMensagem, panel" value="Chorar" /> <p:commandButton
 										class="buttonCancel" style="vertical-align: middle"
 										action="#{mensagenbean.novaInstancia()}"
-										update="listaMensagem , panel" value="Desisistir"  /></li>
+										update="listaMensagem , panel" value="Desisistir" /></li>
 							</ul>
 							<br />
-				
-						<ul class="list-group">
-							<li class="list-group-item" id="texto-PostPrincipal">
-							
-									<p:dataScroller id="listaMensagem" value="#{mensagenbean.posts}" var="pos"
+
+							<ul class="list-group">
+								<li class="list-group-item" id="texto-PostPrincipal"><p:dataScroller
+										id="listaMensagem" value="#{mensagenbean.posts}" var="pos"
 										chunkSize="10">
 										<f:facet name="header">
             Role paga baixo para ler as mensagens
@@ -156,8 +152,8 @@
 
 										<h:panelGrid columns="2" style="width:100%"
 											columnClasses="logo,detail">
-											<p:graphicImage value="#{pos.mensagem.id_usuario_remetente.image}"
-												style="width:100%" />
+										<h:graphicImage value="#{pos.mensagem.id_usuario_remetente.fotoIconBase64}" />
+		
 
 											<p:outputPanel>
 												<h:panelGrid columns="2" cellpadding="5">
@@ -176,11 +172,9 @@
 												</h:panelGrid>
 											</p:outputPanel>
 										</h:panelGrid>
-									</p:dataScroller>
-							
-								</li>
-						</ul>
-								</h:form>
+									</p:dataScroller></li>
+							</ul>
+						</h:form>
 					</div>
 				</div>
 			</div>

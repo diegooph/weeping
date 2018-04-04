@@ -3,7 +3,9 @@ package br.com.weeping.entity;
 import java.io.ByteArrayInputStream;
 import java.util.Collection;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,8 +21,6 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
-
-
 
 @Entity
 @SequenceGenerator(name = "usuario_seq", sequenceName = "usuario_seq", allocationSize = 1, initialValue = 1)
@@ -48,8 +48,24 @@ public class Usuario {
 	@JoinTable(name = "listaAmigo")
 	private Collection<Usuario> listaAmigos;
 
+	/* Representa a imagem em miniatura em base64 */
+	@Column(length = 50000, columnDefinition = "text")
+	private String fotoIconBase64;
+
+	/* Salva a imagem em tamanho original */
 	@Lob
-	private byte[] image;
+	@Basic(fetch = FetchType.LAZY)
+	@Column(name = "fotoIconBase64Original")
+	private byte[] fotoIconBase64Original;
+	private String extensao;
+
+	public String getExtensao() {
+		return extensao;
+	}
+
+	public void setExtensao(String extensao) {
+		this.extensao = extensao;
+	}
 
 	public Usuario() {
 		super();
@@ -60,18 +76,21 @@ public class Usuario {
 		this.nome = nome;
 
 	}
-	public byte[] getImage() {
-		return image;
-	}
-	public StreamedContent getImageStreamed() {
-		StreamedContent imagem;
-		imagem = new DefaultStreamedContent(new ByteArrayInputStream(this.image));
-		return imagem;
+
+	public String getFotoIconBase64() {
+		return fotoIconBase64;
 	}
 
-	public void setImage(byte[] image) {
-		this.image = image;
-		
+	public void setFotoIconBase64(String fotoIconBase64) {
+		this.fotoIconBase64 = fotoIconBase64;
+	}
+
+	public byte[] getFotoIconBase64Original() {
+		return fotoIconBase64Original;
+	}
+
+	public void setFotoIconBase64Original(byte[] fotoIconBase64Original) {
+		this.fotoIconBase64Original = fotoIconBase64Original;
 	}
 
 	public Collection<Mensagem> getMensagens() {

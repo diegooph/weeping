@@ -54,7 +54,7 @@
 			</div>
 		</div>
 	</div>
-	<h:form id="formulario">
+	<h:form id="formulario" enctype="multipart/form-data">
 		<div class="py-2"></div>
 		<div class="container-fluid">
 			<div class="row">
@@ -128,10 +128,15 @@
 
 									<p:growl id="messages" showDetail="true" />
 
-									<p:graphicImage value="#{loginbean.usuario.getImageStreamed()}" mode="simple"
+									<!-- 									<p:outputLabel value="Foto" for="arquivo" /> -->
+									<!-- 									<p:fileUpload id="arquivo" required="true" -->
+									<!-- 										value="#{loginbean.arquivo}" -->
+									<!-- 										requiredMessage="Informe o arquivo" /> -->
+
+
+									<p:fileUpload value="#{loginbean.arquivo}" mode="simple"
 										skinSimple="true" />
 
-									
 								</fieldset>
 							</div>
 						</li>

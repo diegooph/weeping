@@ -1,13 +1,12 @@
 package br.com.weeping.bens;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
-
-import org.primefaces.model.UploadedFile;
 
 import br.com.weeping.entity.Usuario;
 import br.com.weeping.service.UsuarioService;
@@ -24,9 +23,12 @@ public class UsuarioBean {
 
 	@Inject
 	private UsuarioService usuarioDao = new UsuarioService();
-	private UploadedFile file;
+	
 
-	public String salvarNovoUsuario() {
+	public String salvarNovoUsuario() throws IOException {
+
+	
+
 		usuarioDao.salvar(usuario);
 		// salva e faz update na tabela usuario nao afetando login.
 
@@ -45,13 +47,8 @@ public class UsuarioBean {
 		return "";
 	}
 
-	public UploadedFile getFile() {
-		return file;
-	}
 
-	public void setFile(UploadedFile file) {
-		this.file = file;
-	}
+
 
 	public Usuario getUsuario() {
 		return usuario;
