@@ -139,9 +139,13 @@
                                            
                                             <p:outputPanel>
 
-                                                <h:panelGrid columns="2" cellpadding="5">
+
+	
+													<h:graphicImage value="#{pos.mensagem.id_usuario_remetente.fotoIconBase64}" />
+													
+                                             	    <h:panelGrid columns="2" cellpadding="5">
                                                     <h:outputText value="de:"/>
-                                                     <p><h:outputText
+                                                    <p><h:outputText
                                                             value="#{pos.mensagem.id_usuario_remetente.nome}"
                                                             style="font-weight: bold"/></p>
 
