@@ -4,8 +4,9 @@ import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
-
+import br.com.weeping.entity.Login;
 import br.com.weeping.entity.Usuario;
 
 @Stateless
@@ -19,6 +20,7 @@ public class UsuarioService {
 		Collection<Usuario> resultList = em.createQuery("SELECT a from Usuario a", Usuario.class).getResultList();
 		return resultList;
 	}
+
 
 
 	public void salvar(Usuario usuario) {
@@ -41,7 +43,7 @@ public class UsuarioService {
 
 	public void remove(int id) {
 		// apaga tudo referente ao usuario nao usar pois nao apagara o login
-		//em.remove(em.find(Usuario.class, id));
+		// em.remove(em.find(Usuario.class, id));
 	}
 
 }

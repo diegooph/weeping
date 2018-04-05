@@ -43,7 +43,7 @@ public class FilterAutenticacao implements Filter {
 				
 				// para cada linha ex:&& (!url.contains("/img/")) é adicionada um diretorio para o filtro nao bloquear
 				){
-			RequestDispatcher dispatcher = request.getRequestDispatcher("login.xhtml");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("404.xhtml");
 			dispatcher.forward(request, response);
 
 		} else {
