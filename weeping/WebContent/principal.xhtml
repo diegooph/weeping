@@ -133,15 +133,14 @@
 
 
                                         <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail" class="postagens">
-                                            <p:graphicImage value="#{pos.mensagem.id_usuario_remetente.image}"
-                                                            style="width:30%"/>
-
+                                        
+												<h:graphicImage value="#{pos.mensagem.id_usuario_remetente.fotoIconBase64}"  style="width:30%"/>
                                            
                                             <p:outputPanel>
 
 
 	
-													<h:graphicImage value="#{pos.mensagem.id_usuario_remetente.fotoIconBase64}" />
+												
 													
                                              	    <h:panelGrid columns="2" cellpadding="5">
                                                     <h:outputText value="de:"/>
