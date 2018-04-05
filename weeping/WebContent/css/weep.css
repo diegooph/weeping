@@ -260,6 +260,7 @@ left:50%;
 
 header {
     background: url(https://i.pinimg.com/originals/07/62/4a/07624a94d0b3cba2b291977fb4da87c8.jpg) no-repeat;
+    background-size: 100% 100%;
 
 }
 
@@ -287,6 +288,10 @@ header {
     cursor: pointer;
     margin: 5px;
 }
+
+div[id="panel:listaMensagem"] .ui-widget-content {
+	background-color: transparent;
+	}
 
 .buttonIni2 {
     float: left;
