@@ -48,7 +48,7 @@ public class MensagemBens {
 
 	@PostConstruct
 	public void novaInstancia() {
-		login = new Login();
+		login = new Login(); // é usado principalmente para definir o Login.usuario Que esta logado 
 		usuario = new Usuario();
 		post = new Post();
 		resposta = new Resposta();
