@@ -2,6 +2,7 @@ package br.com.weeping.entity;
 
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -33,7 +35,7 @@ public class Mensagem {
 	@OneToMany(mappedBy = "id_mensagem_abordada", fetch = FetchType.LAZY)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Collection<Resposta> resposta;
-
+	@Column(length=301)
 	private String mensagem;
 	private Integer likes; // Sera criado uma tabela para conter os registros do
 							// likes , e assim implementar casos de uso
