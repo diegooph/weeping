@@ -80,7 +80,8 @@
                         <div class="card hovercardp">
                             <div class="cardheaderp"></div>
                             <div class="avatar">
-                                <p:graphicImage value="#{pos.mensagem.id_usuario_remetente.image}" style="width:100%"/>
+<!--                             aki -->
+                                <p:graphicImage value="#{mensagenbean.login.usuario.fotoIconBase64}" />
                             </div>
                             <div class="infop">
                                 <div class="titlep">
@@ -129,7 +130,7 @@
 
 <!-- Aqui comessa a tabela de msgs -->
                                     <p:dataScroller id="listaMensagem" value="#{mensagenbean.posts}" var="pos"
-                                                    chunkSize="10"  mode="inline" scrollHeight="800">
+                                                    chunkSize="10"  mode="inline" scrollHeight="650">
 
 
                                         <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail" class="postagens" >
