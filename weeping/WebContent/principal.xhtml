@@ -145,28 +145,15 @@
                                                             value="#{pos.mensagem.id_usuario_remetente.nome}"
                                                             style="font-weight: bold"/></p>
 
-								<li><p:commandButton class="buttonPost"
-										style="vertical-align: middle"
-										action="#{mensagenbean.novoPost()}"
-										update="listaMensagem, panel" value="Chorar" /> <p:commandButton
-										class="buttonCancel" style="vertical-align: middle"
-										action="#{mensagenbean.novaInstancia()}"
-										update="listaMensagem , panel" value="Desisistir" /></li>
-							</ul>
-							<br />
+                                                    <h:outputText value="Para:"/>
+                                                    <p> <h:outputText value="#{pos.id_usuario_destinatario.nome}"
+                                                                  style="font-weight: bold"/></p>
 
-							<ul class="list-group">
-								<li class="list-group-item" id="texto-PostPrincipal"><p:dataScroller
-										id="listaMensagem" value="#{mensagenbean.posts}" var="pos"
-										chunkSize="10">
-										<f:facet name="header">
-            Role paga baixo para ler as mensagens
-        </f:facet>
-
-										<h:panelGrid columns="2" style="width:100%"
-											columnClasses="logo,detail">
-										<h:graphicImage value="#{pos.mensagem.id_usuario_remetente.fotoIconBase64}" />
-		
+                                                    <h:outputText value="Mensagem:"/>
+                                                    <h:outputText value="#{pos.mensagem.mensagem}"
+                                                                  style="font-weight: bold" class="teste"/>
+												
+                                                </h:panelGrid>
 
                                                 <hr/>
                                                 
@@ -180,18 +167,6 @@
                 </div>
             </div>
 
-													<h:outputText value="Mensagem:" />
-													<h:outputText value="#{pos.mensagem.mensagem}"
-														style="font-weight: bold" />
-												</h:panelGrid>
-											</p:outputPanel>
-										</h:panelGrid>
-									</p:dataScroller></li>
-							</ul>
-						</h:form>
-					</div>
-				</div>
-			</div>
             <!-- Aqui termina a area de postagem -->
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
                 <!-- Aqui pode por algum conteudo, mas por hora só usarei para separar as bordas -->
