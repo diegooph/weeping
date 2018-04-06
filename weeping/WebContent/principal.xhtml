@@ -72,7 +72,6 @@
 		<div class="row">
 			<div class="col-xl-1 col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
 			<!-- Aqui fica o perfil do usuario -->
-
 			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-xs-12">
 
 				<div class="row">
@@ -99,6 +98,19 @@
 									</div>
 									<div class="descp">Desenvolvedor Java e chorão nas horas
 										vagas</div>
+						<div class="card hovercardp">
+							<div class="cardheaderp"></div>
+							<div class="avatar" >
+								<h:graphicImage value="#{mensagenbean.login.usuario.fotoIconBase64}"  />
+								
+							</div>
+							<div class="infop">
+								<div class="titlep">
+									<a target="_blank" href="">
+									
+									<h:outputText value="#{mensagenbean.login.usuario.nome}" />
+									
+									</a>
 								</div>
 								<hr />
 								<div class="infop">
@@ -121,7 +133,6 @@
 					</div>
 				</div>
 			</div>
-
 			<!-- Aqui termina o perfil do usuario -->
 
 			<!-- Aqui inicia a area de postagem -->
@@ -144,7 +155,7 @@
 								<p:commandButton class="buttonCancel"
 									style="vertical-align: middle"
 									action="#{mensagenbean.novaInstancia()}"
-									update="listaMensagem , panel" value="Desisistir" />
+									update="listaMensagem , panel" value="Desistir" />
 								<b><h:outputText class="textoPequeno textoNaDireita"
 										id="caracteres" value="" /></b>
 							</fieldset>
@@ -168,6 +179,7 @@
 												<h:outputText
 													value="#{pos.mensagem.id_usuario_remetente.nome}"
 													style="font-weight: bold" />
+													
 											</p>
 
 											<h:outputText value="Para:" />
