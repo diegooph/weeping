@@ -78,16 +78,15 @@
 					<div class="col-12">
 						<div class="card hovercardp">
 							<div class="cardheaderp"></div>
-							<div class="avatar">
-								<h:graphicImage
-									value="#{mensagenbean.login.usuario.fotoIconBase64}"
-									style="width:100%" />
+							<div class="avatar" >
+								<h:graphicImage value="#{mensagenbean.login.usuario.fotoIconBase64}"  />
+								
 							</div>
 							<div class="infop">
 								<div class="titlep">
 									<a target="_blank" href="">
 									
-									<h:outputText	value="#{mensagenbean.login.usuario.nome}" />
+									<h:outputText value="#{mensagenbean.login.usuario.nome}" />
 									
 									</a>
 								</div>
@@ -136,7 +135,7 @@
 								<p:commandButton class="buttonCancel"
 									style="vertical-align: middle"
 									action="#{mensagenbean.novaInstancia()}"
-									update="listaMensagem , panel" value="Desisistir" />
+									update="listaMensagem , panel" value="Desistir" />
 								<b><h:outputText class="textoPequeno textoNaDireita"
 										id="caracteres" value="" /></b>
 							</fieldset>
@@ -160,6 +159,7 @@
 												<h:outputText
 													value="#{pos.mensagem.id_usuario_remetente.nome}"
 													style="font-weight: bold" />
+													
 											</p>
 
 											<h:outputText value="Para:" />
