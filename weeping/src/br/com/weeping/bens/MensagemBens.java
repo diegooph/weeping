@@ -48,8 +48,8 @@ public class MensagemBens {
 
 	@PostConstruct
 	public void novaInstancia() {
-		login = getUsuarioLogado();
-		usuario = login.getUsuario();
+		login = new Login();
+		usuario = new Usuario();
 		post = new Post();
 		resposta = new Resposta();
 		mensagemAbordada = new Mensagem();
