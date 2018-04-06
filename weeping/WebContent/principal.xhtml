@@ -72,48 +72,56 @@
 		<div class="row">
 			<div class="col-xl-1 col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
 			<!-- Aqui fica o perfil do usuario -->
+
 			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-xs-12">
 
 				<div class="row">
 					<div class="col-12">
-						<div class="card hovercardp">
-							<div class="cardheaderp"></div>
-							<div class="avatar">
-								<h:graphicImage
-									value="#{mensagenbean.login.usuario.fotoIconBase64}"
-									style="width:100%" />
-							</div>
-							<div class="infop">
-								<div class="titlep">
-									<a target="_blank" href="">
-									
-									<h:outputText	value="#{mensagenbean.login.usuario.nome}" />
-									
-									</a>
+						<h:form>
+							<div class="card hovercardp">
+								<div class="cardheaderp"></div>
+								<div class="avatar">
+
+									<h:graphicImage
+										value="#{mensagenbean.login.usuario.fotoIconBase64}"
+										style="width:100%" />
 								</div>
-								<div class="descp">@<h:outputText value="#{mensagenbean.login.usuario.nome}" /></div>
-								<div class="descp">Desenvolvedor Java e chorão nas horas
-									vagas</div>
-							</div>
-							<hr />
-							<div class="infop">
-								<div class="titlep">
-									<a target="_blank" href="">Sobre</a>
+								<div class="infop">
+									<div class="titlep">
+										<a target="_blank" href=""> <h:outputText
+												value="#{mensagenbean.login.usuario.nome}" />
+
+										</a>
+									</div>
+									<div class="descp">
+										@
+										<h:outputText value="#{mensagenbean.login.usuario.nome}" />
+									</div>
+									<div class="descp">Desenvolvedor Java e chorão nas horas
+										vagas</div>
 								</div>
-								<p>Texto, Texto, Texto, Texto, Texto, Texto, Texto</p>
-							</div>
-							<hr />
-							<div class="infop">
-								<div class="titlep">
-									<a target="_blank" href="">Amigos em destaque</a>
+								<hr />
+								<div class="infop">
+									<div class="titlep">
+										<a target="_blank" href="">Sobre</a>
+									</div>
+									<p>Texto, Texto, Texto, Texto, Texto, Texto, Texto</p>
 								</div>
-								<div class="descp">Nem um amigo registrado, ninguém te
-									quer</div>
+								<hr />
+								<div class="infop">
+									<div class="titlep">
+										<a target="_blank" href="">Amigos em destaque</a>
+									</div>
+									<div class="descp">Nem um amigo registrado, ninguém te
+										quer</div>
+								</div>
+
 							</div>
-						</div>
+						</h:form>
 					</div>
 				</div>
 			</div>
+
 			<!-- Aqui termina o perfil do usuario -->
 
 			<!-- Aqui inicia a area de postagem -->
