@@ -79,15 +79,19 @@
 						<div class="card hovercardp">
 							<div class="cardheaderp"></div>
 							<div class="avatar">
-								<p:graphicImage
+								<h:graphicImage
 									value="#{mensagenbean.login.usuario.fotoIconBase64}"
 									style="width:100%" />
 							</div>
 							<div class="infop">
 								<div class="titlep">
-									<a target="_blank" href="">Klebinho Ninja</a>
+									<a target="_blank" href="">
+									
+									<h:outputText	value="#{mensagenbean.login.usuario.nome}" />
+									
+									</a>
 								</div>
-								<div class="descp">@Kleninja</div>
+								<div class="descp">@<h:outputText value="#{mensagenbean.login.usuario.nome}" /></div>
 								<div class="descp">Desenvolvedor Java e chorão nas horas
 									vagas</div>
 							</div>
@@ -149,10 +153,6 @@
 										value="#{pos.mensagem.id_usuario_remetente.fotoIconBase64}" />
 
 									<p:outputPanel>
-
-
-
-
 
 										<h:panelGrid columns="2" cellpadding="5">
 											<h:outputText value="de:" />
