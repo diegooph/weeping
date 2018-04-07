@@ -2,10 +2,15 @@
 .bgBody {
 
     height: 100px;
-    background: #e6ecf0; /* For browsers that do not support gradients */
+    background: #CCFFFF; /* For browsers that do not support gradients */
 
 
 }
+
+
+div[id="panel:listaMensagem"] .ui-widget-content {
+	background-color: transparent;
+	}
 
 
 .config_box{
@@ -19,36 +24,49 @@
 
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  
-  	border: 1px solid;  
-    background-color: #afcdf4;
-    border: none;
+  box-sizing: border-box;  
+  	border: none;  
     border-radius: 10px 0px 0px 70%;
-
-    margin-bottom: 17px;
+    margin-bottom: 10px;
+	background-color: #E6ECF0;
+    
 }
 
 .textoprincipal {
     resize: none;
     border: none;
 	border-radius: 0px 0px 0px 50px;
+	background-color: #F5F8FA;
 }
 
 .postagens{
-	background-color: #9ECADE;
+	
 	margin-bottom: 17px;
-		
+
 }
 
-div[id="panel:listaMensagem"] .ui-widget-content {
-	background-color: transparent;
-	}
+.postagens li:hover {
+  display: block;
+}
+
+.fieldsetMensagens{
 	
-div[id="panel:listaMensagem"]{
+background-color: #F5F8FA;	
+	
+}
+
+/*Mantem as postagens alinhadas*/
+.teste{
+    width: 45em; 
+    display: block;
+    overflow-wrap: break-word;
+  	word-wrap: break-word;
+  	hyphens: auto;  	
+	
+}
+
 	
 	
-}	
 
 
 
@@ -310,7 +328,3 @@ header {
     margin: 5px;
 }
 
-
-div[id="panel:listaMensagem"] .ui-widget-content {
-	background-color: transparent;
-	}

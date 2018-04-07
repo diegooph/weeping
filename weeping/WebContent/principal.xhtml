@@ -105,16 +105,9 @@
 									<div class="titlep">
 										<a target="_blank" href="">Sobre</a>
 									</div>
-									<p>Texto, Texto, Texto, Texto, Texto, Texto, Texto</p>
+									<p><h:outputText value="#{mensagenbean.login.usuario.nome}" /></p>
 								</div>
-								<hr />
-								<div class="infop">
-									<div class="titlep">
-										<a target="_blank" href="">Amigos em destaque</a>
-									</div>
-									<div class="descp">Nem um amigo registrado, ninguém te
-										quer</div>
-								</div>
+
 
 							</div>
 						
@@ -150,6 +143,7 @@
 							</fieldset>
 
 							<!-- Aqui comessa a tabela de msgs -->
+							
 							<p:dataScroller id="listaMensagem" value="#{mensagenbean.posts}"
 								var="pos" chunkSize="10" mode="inline" scrollHeight="650">
 
@@ -160,7 +154,7 @@
 									<h:graphicImage
 										value="#{pos.mensagem.id_usuario_remetente.fotoIconBase64}" />
 
-									<p:outputPanel>
+									<p:outputPanel id="outputPanel">
 
 										<h:panelGrid columns="2" cellpadding="5">
 											<h:outputText value="de:" />
@@ -182,8 +176,6 @@
 
 										</h:panelGrid>
 
-										<hr />
-
 									</p:outputPanel>
 
 								</h:panelGrid>
@@ -196,8 +188,36 @@
 			</div>
 
 			<!-- Aqui termina a area de postagem -->
-			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
-				<!-- Aqui pode por algum conteudo, mas por hora só usarei para separar as bordas -->
+			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-xs-12">
+
+				<div class="row">
+					<div class="col-12">
+						
+							<div class="card hovercardp">
+
+								<div class="infop">
+
+									<div class="descp">Quem esta na terra sem lei ?</div>
+								</div>
+								<div class="infop">
+									<div class="titlep">
+										<a target="_blank" href="">Amigos ativos</a>
+									</div>
+									<p>Texto, Texto, Texto, Texto, Texto, Texto, Texto</p>
+								</div>
+								<hr />
+								<div class="infop">
+									<div class="titlep">
+										<a target="_blank" href="">Talvez voce conheça!</a>
+									</div>
+									<div class="descp">Nem um amigo registrado, ninguém te
+										quer</div>
+								</div>
+
+							</div>
+						
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
