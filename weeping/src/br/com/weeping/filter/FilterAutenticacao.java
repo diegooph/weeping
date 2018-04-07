@@ -40,15 +40,32 @@ public class FilterAutenticacao implements Filter {
 				&& (!url.contains("cadastro.xhtml"))
 				&& (!url.contains("login.xhtml"))
 				&& (!url.contains("tests"))
-				
-				// para cada linha ex:&& (!url.contains("/img/")) é adicionada um diretorio para o filtro nao bloquear
-				){
-			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/404.jsp");
+
+		// para cada linha ex:&& (!url.contains("/img/")) é adicionada um
+		// diretorio para o filtro nao bloquear
+		) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.xhtml");
 			dispatcher.forward(request, response);
 
 		} else {
+			
+			if (!url.contains("principal.xhtml")
+					&& (!url.contains("/img/"))
+					&& (!url.contains("/css/"))
+					&& (!url.contains("/js/"))
+					&& (!url.contains("cadastro.xhtml"))
+					&& (!url.contains("index.xhtml"))
+					&& (!url.contains("painel.xhtml"))
+					&& (!url.contains("user.xhtml"))
+					&& (!url.contains("login.xhtml"))
+					&& (!url.contains("tests"))) {
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/404.jsp");
+				dispatcher.forward(request, response);
 
-			chain.doFilter(request, response);
+			} else {
+				chain.doFilter(request, response);
+			}
 		}
 
 	}

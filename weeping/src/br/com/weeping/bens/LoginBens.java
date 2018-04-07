@@ -7,7 +7,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
@@ -39,46 +42,24 @@ public class LoginBens {
 	@Inject
 	private UsuarioService usuarioDao = new UsuarioService();
 	private boolean aceitarTermos;
-	private UploadedFile arquivo ;
+	private UploadedFile arquivo;
 
 	public String SalvarLogin() throws IOException {
-		String miniImgBase64 = DatatypeConverter.printBase64Binary(getBytes(arquivo.getInputstream()));
+		setFotousuario();
 
-		// Convertendo para byte[] usando lib apache
-		byte[] imageBytes = Base64.getDecoder().decode(miniImgBase64);
-		usuario.setFotoIconBase64Original(imageBytes);
-
-		// Transformando em BufferedImage
-		BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(imageBytes));
-
-		// Pega o tipo da imagem
-		int type = bufferedImage.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : bufferedImage.getType();
-
-		// largura e a altura
-		int largura = Integer.parseInt("300");
-		int altura = Integer.parseInt("180");
-
-		// Cria a imagem em minitura
-		BufferedImage resizedImage = new BufferedImage(largura, altura, type);
-		Graphics2D g = resizedImage.createGraphics();
-		g.drawImage(bufferedImage, 0, 0, largura, altura, null);
-		g.dispose();
-
-		// Escrevendo novamente a imagem em tamanho menor
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		String extensao = arquivo.getContentType().split("\\/")[1];
-		ImageIO.write(resizedImage, extensao, baos);
-
-		miniImgBase64 = "data:" + arquivo.getContentType() + ";base64,"
-				+ DatatypeConverter.printBase64Binary(baos.toByteArray());
-
-		usuario.setFotoIconBase64(miniImgBase64);
-		usuario.setExtensao(extensao);
 		usuario.setEndereco(endereco);
 		login.setUsuario(usuario);
-		daologin.salvar(login);
 
-		return "login.xhtml";
+		if (validarCamposCadastro()) {
+			daologin.salvar(login);
+			return "login.xhtml";
+		}
+
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "há campos não validados."));
+
+		return "";
+
 	}
 
 	public String novaInstancia() {
@@ -99,7 +80,7 @@ public class LoginBens {
 			ExternalContext externalContext = context.getExternalContext();
 			externalContext.getSessionMap().put("usuarioLogado", loginUser);
 			// adicionar a pagina de entrada do usuario
-			return "principal.xhml";
+			return "principal.xhml?faces-redirect=true";
 		}
 
 		return "";
@@ -132,6 +113,93 @@ public class LoginBens {
 			buf = bos.toByteArray();
 		}
 		return buf;
+	}
+
+	public static boolean validar(String email) {
+		boolean isEmailIdValid = false;
+		if (email != null && email.length() > 0) {
+			String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+			Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+			Matcher matcher = pattern.matcher(email);
+			if (matcher.matches()) {
+				isEmailIdValid = true;
+			}
+		}
+		return isEmailIdValid;
+	}
+
+	public boolean validarCamposCadastro() {
+
+		if (!validar(usuario.getEmail()) || usuario.getEmail() == null || usuario.getEmail().equals("")) {
+			return false;
+		}
+
+		if (usuario.getNome() == null || usuario.getNome().length() <= 0 || usuario.getNome().equals("")
+				|| usuario.getNome().length() > 15) {
+			return false;
+		}
+
+		if (usuario.getSobrenome() == null || usuario.getSobrenome().length() <= 0 || usuario.getSobrenome().equals("")
+				|| usuario.getSobrenome().length() > 30) {
+			return false;
+		}
+
+		if (login.getLogin() == null || login.getLogin().equals("") || login.getLogin().length() <= 0
+				|| login.getLogin().length() > 12) {
+			return false;
+		}
+
+		if (login.getSenha() == null || login.getSenha().equals("") || login.getSenha().length() <= 0
+				|| login.getSenha().length() > 20) {
+			return false;
+
+		}
+
+		return true;
+
+	}
+
+	private void setFotousuario() throws IOException {
+		try {
+			
+	
+			System.out.println(arquivo+"soghósdfhhjnjapjdgpbojg ojpbjgpboijpzonjmkpozkbf´zkokhhpokvbókd pobkvzsv---------------------------------------------------------------");
+			String miniImgBase64 = DatatypeConverter.printBase64Binary(getBytes(arquivo.getInputstream()));
+
+			// Convertendo para byte[] usando lib apache
+			byte[] imageBytes = Base64.getDecoder().decode(miniImgBase64);
+			usuario.setFotoIconBase64Original(imageBytes);
+			System.out.println(imageBytes+" s  ogh   ós  fhhjnjapjdgpbojg ojpbjgpboijpzonjmkpozkbf´zkokhhpokvbókd pobkvzsv---------------------------------------------------------------");
+			// Transformando em BufferedImage
+			BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(imageBytes));
+
+			// Pega o tipo da imagem
+			int type = bufferedImage.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : bufferedImage.getType();
+
+			// largura e a altura
+			int largura = Integer.parseInt("300");
+			int altura = Integer.parseInt("180");
+
+			// Cria a imagem em minitura
+			BufferedImage resizedImage = new BufferedImage(largura, altura, type);
+			Graphics2D g = resizedImage.createGraphics();
+			g.drawImage(bufferedImage, 0, 0, largura, altura, null);
+			g.dispose();
+
+			// Escrevendo novamente a imagem em tamanho menor
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			String extensao = arquivo.getContentType().split("\\/")[1];
+			ImageIO.write(resizedImage, extensao, baos);
+
+			miniImgBase64 = "data:" + arquivo.getContentType() + ";base64,"
+					+ DatatypeConverter.printBase64Binary(baos.toByteArray());
+
+			usuario.setFotoIconBase64(miniImgBase64);
+			usuario.setExtensao(extensao);
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "adicione uma foto de valida."));
+		}
 	}
 
 	public UploadedFile getArquivo() {
