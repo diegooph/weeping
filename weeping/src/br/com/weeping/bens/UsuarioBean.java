@@ -19,16 +19,13 @@ import br.com.weeping.service.UsuarioService;
 public class UsuarioBean {
 
 	private Usuario usuario;
-	private List<Usuario> usuarios = new ArrayList<Usuario>();
+
 
 	@Inject
 	private UsuarioService usuarioDao = new UsuarioService();
 	
 
 	public String salvarNovoUsuario() throws IOException {
-
-	
-
 		usuarioDao.salvar(usuario);
 		// salva e faz update na tabela usuario nao afetando login.
 
@@ -66,12 +63,6 @@ public class UsuarioBean {
 		this.usuarioDao = usuarioDao;
 	}
 
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
-
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
+	
 
 }
