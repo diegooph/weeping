@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.weeping.bens.LoginBens;
+import br.com.weeping.entity.Login;
 import br.com.weeping.entity.Mensagem;
 import br.com.weeping.entity.Post;
 import br.com.weeping.entity.Resposta;
 import br.com.weeping.entity.Usuario;
+import br.com.weeping.service.LoginService;
 import br.com.weeping.service.MensagemService;
 import br.com.weeping.service.PostService;
 import br.com.weeping.service.RespostaService;
@@ -30,6 +33,9 @@ public class tests extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
+	
+	@Inject
+	private LoginService servlogin;
 
 	@Inject
 	private UsuarioService servuser;
@@ -52,9 +58,13 @@ public class tests extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	Collection<Post> lista=servpos.getPosts();
-	for (Post post : lista) {
-		response.getWriter().append(post.getMensagem().getMensagem() + " passo").append(request.getContextPath());
+		
+		Login login = servlogin.consultar("f", "f");
+	Collection<Usuario> lista= login.getUsuario().getListaAmigos();
+	int i=0;
+	for (Usuario post : lista) {
+		i++;
+		response.getWriter().append(i+" "+post.getNome() + " \n").append(request.getContextPath());
 	}
 	
 

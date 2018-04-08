@@ -6,8 +6,11 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import br.com.weeping.entity.Login;
 import br.com.weeping.entity.Usuario;
 import br.com.weeping.service.UsuarioService;
 
@@ -17,19 +20,24 @@ import br.com.weeping.service.UsuarioService;
 // a cada metodo que fomos utilizando , adicione um comentario encima do campo
 // com o nome da paggina que foi utilizado
 public class UsuarioBean {
-
+	private Login login;
 	private Usuario usuario;
-
 
 	@Inject
 	private UsuarioService usuarioDao = new UsuarioService();
-	
 
-	public String salvarNovoUsuario() throws IOException {
-		usuarioDao.salvar(usuario);
-		// salva e faz update na tabela usuario nao afetando login.
+	public String acessarUser() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = context.getExternalContext();
+		Object usuarioExterno = null;
+		externalContext.getSessionMap().put("usuarioExterno", usuarioExterno);
+		return "";
+	}
 
-		return "../";
+	public String adicionarAmizade() {
+		usuarioDao.adicionarOuRemoverAmigo(usuario, login);
+
+		return "";
 	}
 
 	public String novaInstancia() {
@@ -44,11 +52,21 @@ public class UsuarioBean {
 		return "";
 	}
 
+	public Login getUsuarioLogado() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = context.getExternalContext();
+		return (Login) externalContext.getSessionMap().get("usuarioLogado");
 
-
+	}
 
 	public Usuario getUsuario() {
 		return usuario;
+	}
+
+	public UsuarioBean() {
+		super();
+		this.login = getUsuarioLogado();
+
 	}
 
 	public void setUsuario(Usuario usuario) {
@@ -62,7 +80,5 @@ public class UsuarioBean {
 	public void setUsuarioDao(UsuarioService usuarioDao) {
 		this.usuarioDao = usuarioDao;
 	}
-
-	
 
 }
