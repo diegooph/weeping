@@ -76,7 +76,13 @@ background-color: #F5F8FA;
     background-color: #7e8d89;
     
 }
-
+.ui-carousel .ui-carousel-header .ui-carousel-header-title{
+	
+	display: inline-block;
+    width:100% ;
+    padding-top: 2px;
+    overflow: hidden;
+}
 
 /*Botão post 01*/
 .chorar {
