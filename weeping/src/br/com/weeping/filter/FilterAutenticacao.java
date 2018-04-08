@@ -37,6 +37,7 @@ public class FilterAutenticacao implements Filter {
 				&& (!url.contains("/img/"))
 				&& (!url.contains("/css/"))
 				&& (!url.contains("/js/"))
+				&& (!url.contains("javax.faces"))
 				&& (!url.contains("cadastro.xhtml"))
 				&& (!url.contains("login.xhtml"))
 				&& (!url.contains("tests"))
@@ -57,6 +58,7 @@ public class FilterAutenticacao implements Filter {
 					&& (!url.contains("index.xhtml"))
 					&& (!url.contains("painel.xhtml"))
 					&& (!url.contains("user.xhtml"))
+					&& (!url.contains("javax.faces"))
 					&& (!url.contains("login.xhtml"))
 					&& (!url.contains("tests"))) {
 				
