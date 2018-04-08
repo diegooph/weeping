@@ -78,7 +78,7 @@ background-color: #F5F8FA;
 }
 
 
-/*BotÃ£o post 01*/
+/*Botão post 01*/
 .chorar {
 
     float: right;
@@ -127,7 +127,7 @@ background-color: #F5F8FA;
     right: 0;
 }
 
-/*BotÃ£o post 01*/
+/*Botão post 01*/
 .buttonCancel {
     float: right;
     background-color: #f4746d;
@@ -175,7 +175,7 @@ background-color: #F5F8FA;
     overflow: hidden;
     text-align: center;
     background: #CCFFFF;
-    background: linear-gradient(180deg, #ccffec, #faf8ff, #dffff8); /* DegradÃª */
+    background: linear-gradient(180deg, #ccffec, #faf8ff, #dffff8); /* Degradê */
 
 }
 
