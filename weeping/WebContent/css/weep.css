@@ -7,6 +7,24 @@
 
 }
 
+#logoTopo{
+	width:212px;
+	height:49px;
+}
+
+#imgOption{
+	
+	width: 40px;
+	height: 40px;
+	
+}
+
+img{
+	
+width:140px;
+height:140px;	
+	
+}
 
 div[id="panel:listaMensagem"] .ui-widget-content {
 	background-color: transparent;
@@ -15,16 +33,15 @@ div[id="panel:listaMensagem"] .ui-widget-content {
 
 .config_box{
 	border: 2px;
-	
-	
+		
 }
 
 
 .fieldsetPrincipal{
 
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;  
+  	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+  	box-sizing: border-box;  
   	border: none;  
     border-radius: 10px 0px 0px 70%;
     margin-bottom: 10px;
@@ -91,6 +108,7 @@ background-color: #F5F8FA;
     text-align: center;
 
 }
+
 
 .buttonPost {
     float: right;
@@ -200,6 +218,14 @@ background-color: #F5F8FA;
 
 }
 
+.card.hovercardp .avatar img {
+
+    height: 100px;
+	width: 100px;
+
+    border: 3px solid rgba(255, 255, 255, 0.5);
+}
+
 /* Use este alinhamento para textos dentro de texarea */
 .alinhamentoDeTexto {
 
@@ -223,14 +249,7 @@ font-size: 12px;
     float: left;
 }
 
-.card.hovercardp .avatar img {
-    width: 100px;
-    height: 100px;
-    max-width: 100px;
-    max-height: 100px;
-    border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0.5);
-}
+
 
 .card.hovercardp .infop {
     padding: 4px 8px 10px;

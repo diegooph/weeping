@@ -33,7 +33,7 @@
 	<!--Main Navigation-->
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-			<img id="topo" src="https://i.imgur.com/ZOsu7h2.png"
+			<img id="logoTopo" src="https://i.imgur.com/ZOsu7h2.png"
 				class="img-responsive" alt="" />
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
@@ -53,7 +53,7 @@
 					<li class="nav-item avatar dropdown"><a
 						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-5"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<img src="http://www.torneodj.com/files/avatar/2_120.jpg"
+							<img id="imgOption" src="http://www.torneodj.com/files/avatar/2_120.jpg"
 							class="rounded z-depth-4" width="35" height="30" />
 					</a>
 						<div class="dropdown-menu dropdown-menu-right dropdown-purple"
@@ -83,8 +83,7 @@
 							<div class="avatar">
 
 								<h:graphicImage
-									value="#{mensagenbean.login.usuario.fotoIconBase64}"
-									style="width:100%" />
+									value="#{mensagenbean.login.usuario.fotoIconBase64}"/>
 							</div>
 							<div class="infop">
 								<div class="titlep">
@@ -146,44 +145,18 @@
 
 							<!-- Aqui comessa a tabela de msgs -->
 
-							<p:dataScroller id="listaMensagem" value="#{mensagenbean.posts}"
-								var="pos" chunkSize="10" mode="inline" scrollHeight="650">
-
-
-								<h:panelGrid columns="2" style="width:100%"
-									columnClasses="logo,detail" class="postagens">
-
-
-									<h:graphicImage
-										value="#{pos.mensagem.id_usuario_remetente.fotoIconBase64}" />
-
+							<p:dataScroller id="listaMensagem" value="#{mensagenbean.posts}" var="pos" chunkSize="10" mode="inline" scrollHeight="650">
+								<h:panelGrid columns="2" style="width:100%"	columnClasses="logo,detail" class="postagens">
+									<h:graphicImage	value="#{pos.mensagem.id_usuario_remetente.fotoIconBase64}" />
 									<p:outputPanel id="outputPanel">
-
 										<h:panelGrid columns="2" cellpadding="5">
-											<h:outputText value="de:" />
-											<p>
-												<h:outputText
-													value="#{pos.mensagem.id_usuario_remetente.nome}"
-													style="font-weight: bold" />
-											</p>
-
-											<h:outputText value="Para:" />
-											<p>
-												<h:outputText value="#{pos.id_usuario_destinatario.nome}"
-													style="font-weight: bold" />
-											</p>
-
-											<h:outputText value="Mensagem:" />
-											<h:outputText value="#{pos.mensagem.mensagem}"
-												style="font-weight: bold" class="teste" />
-
-										</h:panelGrid>
-
-									</p:outputPanel>
-
-								</h:panelGrid>
+											<h:outputText value="#{mensagenbean.login.usuario.nome}" />
+											<br/>
+											<h:outputText value="#{pos.mensagem.mensagem}" />
+										</h:panelGrid>										
+									</p:outputPanel>									
+								</h:panelGrid>								
 							</p:dataScroller>
-
 						</h:form>
 						<!--                         aqui termina a tabela de msgs -->
 					</div>
