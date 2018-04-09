@@ -60,11 +60,11 @@ public class tests extends HttpServlet {
 			throws ServletException, IOException {
 		
 		Login login = servlogin.consultar("f", "f");
-	Collection<Usuario> lista= login.getUsuario().getListaAmigos();
+	Collection<Usuario> lista= login.getUsuario().getListaSeguidores();
 	int i=0;
 	for (Usuario post : lista) {
 		i++;
-		response.getWriter().append(i+" "+post.getNome() + " \n").append(request.getContextPath());
+		response.getWriter().append(i+" "+post.getNome() + lista.size()+" \n").append(request.getContextPath());
 	}
 	
 

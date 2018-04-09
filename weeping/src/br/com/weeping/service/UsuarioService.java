@@ -5,9 +5,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
-import com.sun.org.apache.bcel.internal.generic.GETFIELD;
-
 import br.com.weeping.entity.Login;
 import br.com.weeping.entity.Usuario;
 
@@ -29,11 +26,15 @@ public class UsuarioService {
 		q.setParameter("usuario", usuario.getIdUsuario());
 		
 		if (q.getSingleResult()==null) {
-			usuario.getListaAmigos().add(login.getUsuario());			
+		usuario.getListaSeguidores().add(login.getUsuario());		
+		login.getUsuario().getListaSeguidos().add(usuario);		
 			em.merge(usuario);
+			em.merge(login.getUsuario());
 		} else {
-			usuario.getListaAmigos().remove(login.getUsuario());			
-			em.merge(usuario);
+			usuario.getListaSeguidores().remove(login.getUsuario());		
+			login.getUsuario().getListaSeguidos().remove(usuario);		
+				em.merge(usuario);
+				em.merge(login.getUsuario());
 		}
 		
 	}
