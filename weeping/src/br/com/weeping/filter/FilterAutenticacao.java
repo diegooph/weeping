@@ -40,6 +40,7 @@ public class FilterAutenticacao implements Filter {
 				&& (!url.contains("javax.faces"))
 				&& (!url.contains("cadastro.xhtml"))
 				&& (!url.contains("login.xhtml"))
+				&& (!url.contains("facelets"))
 				&& (!url.contains("tests"))
 
 		// para cada linha ex:&& (!url.contains("/img/")) é adicionada um
@@ -54,6 +55,7 @@ public class FilterAutenticacao implements Filter {
 					&& (!url.contains("/img/"))
 					&& (!url.contains("/css/"))
 					&& (!url.contains("/js/"))
+					&& (!url.contains("facelets"))
 					&& (!url.contains("cadastro.xhtml"))
 					&& (!url.contains("index.xhtml"))
 					&& (!url.contains("painel.xhtml"))

@@ -193,8 +193,6 @@ div[id="panel:listaMensagem"] .ui-widget-content {
 	padding: 0px 90px;
 }
 
-
-
 /* Use este alinhamento para textos dentro de texarea */
 .alinhamentoDeTexto {
 	text-align: center;
@@ -217,6 +215,7 @@ div[id="panel:listaMensagem"] .ui-widget-content {
 	padding: 4px 8px 10px;
 	padding-top: 100px;
 }
+
 .avatar img {
 	height: 100px;
 	width: 100px;
@@ -226,12 +225,18 @@ div[id="panel:listaMensagem"] .ui-widget-content {
 	left: 50%;
 	margin-left: -50px;
 }
+
 .selectedbox {
 	width: 100px;
 	height: 100px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
+}
+
+.ui-carousel .ui-carousel-viewport .ui-carousel-items .ui-carousel-item
+	{
+	padding: 3px;
 }
 
 .card.hovercardp .infop .titlep {
@@ -249,7 +254,19 @@ div[id="panel:listaMensagem"] .ui-widget-content {
 	color: #737373;
 	text-overflow: ellipsis;
 }
+.textUser{
+	color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
 
+.ui-dialog{
+	
+}
+td.label {
+    text-align: center;
+    font-size: x-large;
+}
 .card.hovercardp .bottom {
 	padding: 0 20px;
 	margin-bottom: 17px;
