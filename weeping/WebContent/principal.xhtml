@@ -158,7 +158,11 @@
 											<br />
 											<h:outputText value="#{pos.mensagem.mensagem}" />
 										</h:panelGrid>
-
+										<p:commandButton actionListener="#{mensagenbean.apagarMensagem('#{pos.mensagem.idMensagem}')}"
+											id="iconOnly" update=":panel:listaMensagem" icon="ui-icon-trash"
+											title="Icon Only" >
+											
+											</p:commandButton>
 									</p:outputPanel>
 
 								</h:panelGrid>

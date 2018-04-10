@@ -88,10 +88,10 @@ public class MensagemBens {
 		return "";
 	}
 
-	public String apagarMensagem()  {
-		if (validarPermicaoUsuarioMensagem()) {
-			mensagemDao.remove(	postSelecionado.getMensagem().getIdMensagem());
-		}
+	public String apagarMensagem(String id) {
+
+		mensagemDao.remove(Integer.parseInt(id));
+
 		return "";
 	}
 
