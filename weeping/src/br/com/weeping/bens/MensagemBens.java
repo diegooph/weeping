@@ -8,6 +8,8 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import com.sun.org.apache.bcel.internal.generic.RETURN;
+
 import br.com.weeping.entity.Login;
 import br.com.weeping.entity.Mensagem;
 import br.com.weeping.entity.Post;
@@ -93,7 +95,7 @@ public class MensagemBens {
 			posts.remove(post);
 			mensagemDao.remove(postSelecionado.getMensagem().getIdMensagem());
 
-		} 
+		}
 		return "";
 	}
 
@@ -105,6 +107,35 @@ public class MensagemBens {
 		}
 		return false;
 
+	}
+
+	public String entrarUsuario(Usuario usuario) {
+		this.usuario = usuario;
+
+		return "";
+	}
+
+	public String seguir() {
+		if (login.getUsuario().getListaSeguidos().contains(usuario)) {
+			login.getUsuario().getListaSeguidos().remove(usuario);
+		} else {
+			login.getUsuario().getListaSeguidos().add(usuario);
+		}
+usuarioDao.salvar(login.getUsuario());
+		return "";
+	}
+	public String trocarIconSeguir() {
+		if (login.getUsuario().getListaSeguidos().contains(usuario)) {
+			return "ui-icon-close ";
+		} 
+		return "ui-icon-check";
+	}
+
+	public boolean esconderBotaoSeguir() {
+		if (login.getUsuario() == usuario) {
+			return false;
+		}
+		return true;
 	}
 
 	public Post resgatarPostxhtml() {

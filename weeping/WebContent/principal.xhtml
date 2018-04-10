@@ -46,9 +46,10 @@
 
 					<li class="nav-item active"><a class="nav-link" href="#">Weep's<span
 							class="sr-only">(current)</span></a></li>
-							
-					<li><a class="nav-link" href="painel.xhtml">Painel de controle <span
-							class="sr-only">(current)</span></a></li>
+
+					<li><a class="nav-link" href="painel.xhtml">Painel de
+							controle <span class="sr-only">(current)</span>
+					</a></li>
 				</ul>
 				<ul class="navbar-nav ml-auto nav-flex-icons">
 
@@ -85,19 +86,18 @@
 							<div class="cardheaderp"></div>
 							<div class="avatar">
 
-								<h:graphicImage
-									value="#{mensagenbean.login.usuario.fotoIconBase64}" />
+								<h:graphicImage value="#{mensagenbean.usuario.fotoIconBase64}" />
 							</div>
 							<div class="infop">
 								<div class="titlep">
 									<a target="_blank" href=""> <h:outputText
-											value="#{mensagenbean.login.usuario.nome}" />
+											value="#{mensagenbean.usuario.nome}" />
 
 									</a>
 								</div>
 								<div class="descp">
 									@
-									<h:outputText value="#{mensagenbean.login.usuario.nome}" />
+									<h:outputText value="#{mensagenbean.usuario.nome}" />
 								</div>
 								<div class="descp">Desenvolvedor Java e chorão nas horas
 									vagas</div>
@@ -108,8 +108,13 @@
 									<a target="_blank" href="">Sobre</a>
 								</div>
 								<p>
-									<h:outputText value="#{mensagenbean.login.usuario.nome}" />
+									<h:outputText value="#{mensagenbean.usuario.nome}" />
 								</p>
+								
+									<p:commandButton id="botaoSeguir" action="#{mensagenbean.seguir()}"
+											update="botaoSeguir" icon="#{mensagenbean.trocarIconSeguir()}"
+											rendered="#{mensagenbean.esconderBotaoSeguir()}"
+											value="Seguir" />
 							</div>
 
 
@@ -125,7 +130,7 @@
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
 				<div class="row">
 					<div class="col-12 ">
-						<h:form id="panel" >
+						<h:form id="panel">
 							<fieldset class="fieldsetPrincipal">
 								<p:inputTextarea widgetVar="editor1"
 									value="#{mensagenbean.mensagemprincipal.mensagem}"
@@ -152,20 +157,21 @@
 								var="pos" chunkSize="10" mode="inline" scrollHeight="650">
 								<h:panelGrid columns="2" style="width:100%"
 									columnClasses="logo,detail" class="postagens">
-									<h:graphicImage
-										value="#{pos.mensagem.id_usuario_remetente.fotoIconBase64}" />
+									<h:commandLink action="#{mensagenbean.entrarUsuario(pos.mensagem.id_usuario_remetente)}">
+										<h:graphicImage
+											value="#{pos.mensagem.id_usuario_remetente.fotoIconBase64}" />
+									</h:commandLink>
 									<p:outputPanel id="outputPanel">
 										<h:panelGrid columns="2" cellpadding="5">
-											<h:outputText value="#{mensagenbean.login.usuario.nome}" />
+											<h:outputText value="#{pos.mensagem.id_usuario_remetente.nome}" />
 											<br />
 											<h:outputText value="#{pos.mensagem.mensagem}" />
 										</h:panelGrid>
-										<p:commandButton
-											action="#{mensagenbean.apagarMensagem(pos)}"
+										<p:commandButton action="#{mensagenbean.apagarMensagem(pos)}"
 											update=":panel:listaMensagem" icon="ui-icon-trash"
 											rendered="#{mensagenbean.validarPermicaoUsuarioMensagem(pos)}"
-											onclick="return confirm('Tem certeza?')"/>		
-											
+											onclick="return confirm('Tem certeza?')" />
+
 									</p:outputPanel>
 
 								</h:panelGrid>
@@ -184,17 +190,19 @@
 
 						<div class="infop">
 
-							<!-- 									inicio amigos -->
+							<!-- 									inicio amigos seguindo -->
 							<h:form id="listaAmigos">
 
 								<p:carousel value="#{mensagenbean.usuario.listaSeguidos}"
-									headerText="Lista de Amigos" var="amigo"
+									headerText="Seguindo #{mensagenbean.usuario.listaSeguidos.size()} " var="amigo"
 									itemStyle="height:200px;text-align:center" numVisible="1"
 									easing="easeOutBounce" style="width:310px" cricular="true">
 									<h:panelGrid columns="2" style="width:100%"
 										columnClasses="label,value">
 										<f:facet name="header">
+										<h:commandLink action="#{mensagenbean.entrarUsuario(amigo)}">
 											<h:graphicImage value="#{amigo.fotoIconBase64}" />
+											</h:commandLink>
 										</f:facet>
 										<h:outputText value="#{amigo.nome}" styleClass="textUser" />
 
@@ -202,7 +210,30 @@
 
 									</h:panelGrid>
 								</p:carousel>
-								<!--     final amigos -->
+								<!--     final amigos seguindo-->
+							</h:form>
+							
+									<!-- 									inicio amigos seguindores -->
+							<h:form id="listaAmigosseguidores">
+
+								<p:carousel value="#{mensagenbean.usuario.listaSeguidores}"
+									headerText="Seguidores #{mensagenbean.usuario.listaSeguidores.size()} " var="amigo"
+									itemStyle="height:200px;text-align:center" numVisible="1"
+									easing="easeOutBounce" style="width:310px" cricular="true">
+									<h:panelGrid columns="2" style="width:100%"
+										columnClasses="label,value">
+										<f:facet name="header">
+										<h:commandLink action="#{mensagenbean.entrarUsuario(amigo)}">
+											<h:graphicImage value="#{amigo.fotoIconBase64}" />
+											</h:commandLink>
+										</f:facet>
+										<h:outputText value="#{amigo.nome}" styleClass="textUser" />
+
+
+
+									</h:panelGrid>
+								</p:carousel>
+								<!--     final amigos seguidores-->
 							</h:form>
 						</div>
 					</div>

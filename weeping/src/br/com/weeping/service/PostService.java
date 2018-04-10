@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import br.com.weeping.entity.Post;
+import br.com.weeping.entity.Usuario;
 
 @Stateless
 public class PostService {
@@ -18,6 +19,7 @@ public class PostService {
 		Collection<Post> resultList = em.createQuery("SELECT p from Post p ORDER BY p.idPost DESC" , Post.class).getResultList();
 		return resultList;
 	}
+
 
 	public void salvar(Post post) {
 		if (post.getIdPost() == null) {
