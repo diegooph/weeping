@@ -43,9 +43,9 @@
 			</button>
 			<div class="collapse navbar-collapse " id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<li><a class="nav-link" href="principal.xhtml">Inicio <span
+					<li><a class="nav-link" href="principal.xhtml">Weep's<span
 							class="sr-only">(current)</span></a></li>
-					<li class="nav-item active"><a class="nav-link" href="#">Weep's<span
+					<li class="nav-item active"><a class="nav-link" href="#">Painel de controle<span
 							class="sr-only">(current)</span></a></li>
 				</ul>
 				<ul class="navbar-nav ml-auto nav-flex-icons">
@@ -119,47 +119,192 @@
 			<!-- Aqui termina o perfil do usuario -->
 
 			<!-- Aqui inicia a area de postagem -->
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-				<div class="row">
-					<div class="col-12 ">
-						<h:form id="panel">
+				<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+					<ul class="list-group">
+						<li class="list-group-item">
 
 
-								<p:commandButton class="buttonConfig vermelho"
-									style="vertical-align: middle"
-										update="" value="Apagar Conta" />
+							<div class="form-horizontal">
+								<fieldset>
+									<!-- Text input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="Nome">Nome</label>
+										<div class="col-md-8">
+
+											<h:inputText id="Nome" name="Nome" type="text"
+												placeholder="João" class="form-control input-md"
+												value="#{loginbean.usuario.nome}" />
+
+
+
+										</div>
+									</div>
+									<!-- Text input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="sobrenome">Sobrenome</label>
+										<div class="col-md-8">
+											<h:inputText id="sobrenome" name="sobrenome" type="text"
+												placeholder="Sobrenome" class="form-control input-md"
+												value="#{loginbean.usuario.sobrenome}" />
+
+										</div>
+									</div>
+
+									<!-- Text input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="login">Login</label>
+										<div class="col-md-8">
+											<h:inputText id="loginid" name="login" type="text"
+												placeholder="use para entrar no site"
+												class="form-control input-md"
+												value="#{loginbean.login.login}" />
+										</div>
+									</div>
+
+									<!-- Password input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="senha">Senha</label>
+										<div class="col-md-8">
+											<h:inputText id="senha" name="senha" type="password"
+												placeholder="****************" class="form-control input-md"
+												value="#{loginbean.login.senha}" />
+										</div>
+									</div>
+
+									<!-- Password input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="rsenha">Re-senha</label>
+										<div class="col-md-8">
+											<h:inputText id="rsenha" name="rsenha" type="password"
+												placeholder="****************" class="form-control input-md"
+												required="true" />
+										</div>
+									</div>
+									<label class="col-md-4 control-label" for="cidade">Alterar foto</label>
+									<p:growl id="messages" showDetail="true" />
+									<p:fileUpload value="#{loginbean.arquivo}" mode="simple"
+										skinSimple="false" />
 										
-										<p:commandButton class="buttonConfig laranja"
-									style="vertical-align: middle"
-										update="" value="Alterar sobre" />
-										
-										<p:commandButton class="buttonConfig laranja"
-									style="vertical-align: middle"
-										update="" value="Texto pessoal" />
-										
-										<p:commandButton class="buttonConfig laranja"
-									style="vertical-align: middle"
-										update="" value="Alterar Nome" />
-
-
-						</h:form>
-
-						<!--                         aqui termina a tabela de msgs -->
-					</div>
+										<hr/>
+										<div class="form-group">
+										<label class="col-md-4 control-label" for="cidade">Texto de perfil</label>
+										<div class="col-md-8">
+											<h:inputText id="cidade" name="cidade" type="text"
+												placeholder="Florianópolis | Bahia"
+												class="form-control input-md"
+												value="#{loginbean.endereco.cidade}" />
+										</div>
+									</div>
+								</fieldset>
+							</div>
+						</li>
+					</ul>
 				</div>
-			</div>
+<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+					<ul class="list-group">
+						<li class="list-group-item">
+
+							<div class="form-horizontal">
+								<fieldset>
+									<!-- Prepended text-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="email">Email</label>
+										<div class="col-md-8">
+											<div class="input-group">
+												<span class="input-group-addon">@</span>
+												<h:inputText id="email" name="email" class="form-control"
+													placeholder="chorao@chora.mais.br" type="text"
+													value="#{loginbean.usuario.email}" />
+											</div>
+										</div>
+									</div>
+
+									<!-- Text input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="endereco">Endereço</label>
+										<div class="col-md-8">
+											<h:inputText id="endereco" name="endereco" type="text"
+												placeholder="rua do cairo | av. das torres"
+												class="form-control input-md" required="true"
+												value="#{loginbean.endereco.logradouro}" />
+										</div>
+									</div>
+
+									<!-- Text input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="cep">CEP</label>
+										<div class="col-md-8">
+											<h:inputText id="cep" name="cep" type="text"
+												placeholder="00000-000" class="form-control input-md"
+												value="#{loginbean.endereco.cep}" />
+										</div>
+									</div>
+
+									<!-- Text input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="cidade">Cidade</label>
+										<div class="col-md-8">
+											<h:inputText id="cidade" name="cidade" type="text"
+												placeholder="Florianópolis | Bahia"
+												class="form-control input-md"
+												value="#{loginbean.endereco.cidade}" />
+										</div>
+									</div>
+
+									<!-- Text input-->
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="bairro">Bairro</label>
+										<div class="col-md-8">
+											<h:inputText id="bairro" name="bairro" type="text"
+												placeholder="Pantanal | trindade"
+												class="form-control input-md"
+												value="#{loginbean.endereco.bairro}" />
+												<br/>
+										</div>
+									</div>
+									
+																	<hr/>
+										<div class="form-group">
+										<label class="col-md-4 control-label" for="cidade">Alterar sobre</label>
+										<div class="col-md-8">
+											<h:inputText id="cidade" name="cidade" type="text"
+												placeholder="Florianópolis | Bahia"
+												class="form-control input-md"
+												value="#{loginbean.endereco.cidade}" />
+										</div>
+									</div>
+								</fieldset>
+								<br/>
+							</div>
+						</li>
+					</ul>
+				</div>
 
 			<!-- Aqui termina a area de postagem -->
-			<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-xs-12">
 
-				<div class="row">
-					<div class="col-12">
+			
+			<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12"></div>
+				<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-xs-12">
 
-				<!-- Terceira parte. -->
+					<ul class="list-group">
+						<li class="list-group-item">						
+							<div class="form-horizontal" id="botoes">
+								<p id="confirmar" class="alinhamentoDeTexto"></p>
+								<h:commandButton class="btn btn-block btn-secondary"
+									onclick="validarCampos()" value="Atualizar cadastro"
+									action="#{loginbean.SalvarLogin()}" />
+							</div>
 
-					</div>
+						</li>
+					</ul>
 				</div>
 			</div>
+
+		</div>
 		</div>
 	</div>
 	<script type="text/javascript"
