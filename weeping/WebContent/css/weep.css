@@ -8,10 +8,18 @@
 	height: 49px;
 }
 
+#logoTopo1 {
+	width: 400px;
+	height: 120px;
+	align-items: center;
+}
+
 #imgOption {
 	width: 40px;
 	height: 40px;
 }
+
+
 
 img {
 	width: 140px;
