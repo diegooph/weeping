@@ -32,6 +32,7 @@ public class MensagemBens {
 	private Resposta resposta;
 	private Mensagem mensagemAbordada;
 	private Post postSelecionado;
+	private Collection<Post> posts;
 
 	@Inject
 	private PostService postDao;
@@ -44,8 +45,6 @@ public class MensagemBens {
 
 	@Inject
 	private RespostaService resDao = new RespostaService();
-
-	private Collection<Post> posts;
 
 	@PostConstruct
 	public void novaInstancia() {
@@ -88,21 +87,33 @@ public class MensagemBens {
 		return "";
 	}
 
-	public String apagarMensagem(String id) {
+	public String apagarMensagem(Post post) {
+		postSelecionado = post;
+		if (validarPermicaoUsuarioMensagem(post)) {
+			posts.remove(post);
+			mensagemDao.remove(postSelecionado.getMensagem().getIdMensagem());
 
-		mensagemDao.remove(Integer.parseInt(id));
-
+		} 
 		return "";
 	}
 
-	public boolean validarPermicaoUsuarioMensagem() {
-
-		if (postSelecionado.getId_usuario_destinatario() == login.getUsuario()
+	public boolean validarPermicaoUsuarioMensagem(Post post) {
+		postSelecionado = post;
+		if (postSelecionado.getId_usuario_destinatario().getIdUsuario() == login.getUsuario().getIdUsuario()
 				|| (postSelecionado.getMensagem().getId_usuario_remetente() == login.getUsuario())) {
 			return true;
 		}
 		return false;
 
+	}
+
+	public Post resgatarPostxhtml() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = context.getExternalContext();
+		post = new Post();
+		Post post = (Post) externalContext.getSessionMap().get("PostSelecionado");
+
+		return post;
 	}
 
 	public Login getLogin() {

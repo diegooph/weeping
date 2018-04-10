@@ -101,7 +101,7 @@
 									vagas</div>
 							</div>
 							<hr />
-							<div class="infop">
+							<div class="sobreDiv">
 								<div class="titlep">
 									<a target="_blank" href="">Sobre</a>
 								</div>
@@ -123,7 +123,7 @@
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
 				<div class="row">
 					<div class="col-12 ">
-						<h:form id="panel">
+						<h:form id="panel" >
 							<fieldset class="fieldsetPrincipal">
 								<p:inputTextarea widgetVar="editor1"
 									value="#{mensagenbean.mensagemprincipal.mensagem}"
@@ -158,11 +158,12 @@
 											<br />
 											<h:outputText value="#{pos.mensagem.mensagem}" />
 										</h:panelGrid>
-										<p:commandButton actionListener="#{mensagenbean.apagarMensagem('#{pos.mensagem.idMensagem}')}"
-											id="iconOnly" update=":panel:listaMensagem" icon="ui-icon-trash"
-											title="Icon Only" >
+										<p:commandButton
+											action="#{mensagenbean.apagarMensagem(pos)}"
+											update=":panel:listaMensagem" icon="ui-icon-trash"
+											rendered="#{mensagenbean.validarPermicaoUsuarioMensagem(pos)}"
+											onclick="return confirm('Tem certeza?')"/>		
 											
-											</p:commandButton>
 									</p:outputPanel>
 
 								</h:panelGrid>
