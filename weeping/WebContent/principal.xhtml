@@ -53,7 +53,8 @@
 					<li class="nav-item avatar dropdown"><a
 						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-5"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<img id="imgOption" src="http://www.torneodj.com/files/avatar/2_120.jpg"
+							<img id="imgOption"
+							src="http://www.torneodj.com/files/avatar/2_120.jpg"
 							class="rounded z-depth-4" width="35" height="30" />
 					</a>
 						<div class="dropdown-menu dropdown-menu-right dropdown-purple"
@@ -83,7 +84,7 @@
 							<div class="avatar">
 
 								<h:graphicImage
-									value="#{mensagenbean.login.usuario.fotoIconBase64}"/>
+									value="#{mensagenbean.login.usuario.fotoIconBase64}" />
 							</div>
 							<div class="infop">
 								<div class="titlep">
@@ -145,19 +146,22 @@
 
 							<!-- Aqui comessa a tabela de msgs -->
 
-							<p:dataScroller id="listaMensagem" value="#{mensagenbean.posts}" var="pos" chunkSize="10" mode="inline" scrollHeight="650">
-								<h:panelGrid columns="2" style="width:100%"	columnClasses="logo,detail" class="postagens">
-									<h:graphicImage	value="#{pos.mensagem.id_usuario_remetente.fotoIconBase64}" />
+							<p:dataScroller id="listaMensagem" value="#{mensagenbean.posts}"
+								var="pos" chunkSize="10" mode="inline" scrollHeight="650">
+								<h:panelGrid columns="2" style="width:100%"
+									columnClasses="logo,detail" class="postagens">
+									<h:graphicImage
+										value="#{pos.mensagem.id_usuario_remetente.fotoIconBase64}" />
 									<p:outputPanel id="outputPanel">
 										<h:panelGrid columns="2" cellpadding="5">
-											<h:outputText value="#{mensagenbean.login.usuario.nome}" />											
-											<br/>
+											<h:outputText value="#{mensagenbean.login.usuario.nome}" />
+											<br />
 											<h:outputText value="#{pos.mensagem.mensagem}" />
-										</h:panelGrid>	
-																			
-									</p:outputPanel>	
-																
-								</h:panelGrid>								
+										</h:panelGrid>
+
+									</p:outputPanel>
+
+								</h:panelGrid>
 							</p:dataScroller>
 						</h:form>
 						<!--                         aqui termina a tabela de msgs -->
@@ -171,15 +175,12 @@
 				<div class="row">
 					<div class="col-12">
 
-
-
-
 						<div class="infop">
 
 							<!-- 									inicio amigos -->
 							<h:form id="listaAmigos">
 
-								<p:carousel value="#{mensagenbean.usuario.listaAmigos}"
+								<p:carousel value="#{mensagenbean.usuario.listaSeguidos}"
 									headerText="Lista de Amigos" var="amigo"
 									itemStyle="height:200px;text-align:center" numVisible="1"
 									easing="easeOutBounce" style="width:310px" cricular="true">
@@ -188,8 +189,7 @@
 										<f:facet name="header">
 											<h:graphicImage value="#{amigo.fotoIconBase64}" />
 										</f:facet>
-										<h:outputText value="Nome:" />
-										<h:outputText value="#{amigo.nome}" />
+										<h:outputText value="#{amigo.nome}" styleClass="textUser" />
 
 
 

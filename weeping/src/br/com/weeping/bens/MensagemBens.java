@@ -31,6 +31,7 @@ public class MensagemBens {
 	private Mensagem mensagemprincipal;
 	private Resposta resposta;
 	private Mensagem mensagemAbordada;
+	private Post postSelecionado;
 
 	@Inject
 	private PostService postDao;
@@ -87,15 +88,37 @@ public class MensagemBens {
 		return "";
 	}
 
-	
-	
-	
+	public String apagarMensagem()  {
+		if (validarPermicaoUsuarioMensagem()) {
+			mensagemDao.remove(	postSelecionado.getMensagem().getIdMensagem());
+		}
+		return "";
+	}
+
+	public boolean validarPermicaoUsuarioMensagem() {
+
+		if (postSelecionado.getId_usuario_destinatario() == login.getUsuario()
+				|| (postSelecionado.getMensagem().getId_usuario_remetente() == login.getUsuario())) {
+			return true;
+		}
+		return false;
+
+	}
+
 	public Login getLogin() {
 		return login;
 	}
 
 	public void setLogin(Login login) {
 		this.login = login;
+	}
+
+	public Post getPostSelecionado() {
+		return postSelecionado;
+	}
+
+	public void setPostSelecionado(Post postSelecionado) {
+		this.postSelecionado = postSelecionado;
 	}
 
 	public Usuario getUsuario() {

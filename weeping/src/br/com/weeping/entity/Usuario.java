@@ -1,6 +1,6 @@
 package br.com.weeping.entity;
 
-import java.io.ByteArrayInputStream;
+
 import java.util.Collection;
 
 import javax.persistence.Basic;
@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
@@ -19,8 +20,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.primefaces.model.DefaultStreamedContent;
-import org.primefaces.model.StreamedContent;
 
 @Entity
 @SequenceGenerator(name = "usuario_seq", sequenceName = "usuario_seq", allocationSize = 1, initialValue = 1)
@@ -44,9 +43,21 @@ public class Usuario {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Collection<Post> posts;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "listaAmigo")
-	private Collection<Usuario> listaAmigos;
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "listaAmigo", joinColumns = {
+			@JoinColumn(name = "Lista_idusuario", referencedColumnName = "idusuario") }, inverseJoinColumns = {
+					@JoinColumn(name = "usuario_idusuario", referencedColumnName = "idusuario") }
+
+	)
+	private Collection<Usuario> listaSeguidores;
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "listaAmigo", joinColumns = {
+			@JoinColumn(name = "usuario_idusuario", referencedColumnName = "idusuario") }, inverseJoinColumns = {
+					@JoinColumn(name = "Lista_idusuario", referencedColumnName = "idusuario") }
+
+	)
+	private Collection<Usuario> listaSeguidos;
 
 	/* Representa a imagem em miniatura em base64 */
 	@Column(length = 50000, columnDefinition = "text")
@@ -109,12 +120,21 @@ public class Usuario {
 		this.posts = posts;
 	}
 
-	public Collection<Usuario> getListaAmigos() {
-		return listaAmigos;
+
+	public Collection<Usuario> getListaSeguidores() {
+		return listaSeguidores;
 	}
 
-	public void setListaAmigos(Collection<Usuario> listaAmigos) {
-		this.listaAmigos = listaAmigos;
+	public void setListaSeguidores(Collection<Usuario> listaSeguidores) {
+		this.listaSeguidores = listaSeguidores;
+	}
+
+	public Collection<Usuario> getListaSeguidos() {
+		return listaSeguidos;
+	}
+
+	public void setListaSeguidos(Collection<Usuario> listaSeguidos) {
+		this.listaSeguidos = listaSeguidos;
 	}
 
 	public String getSobrenome() {

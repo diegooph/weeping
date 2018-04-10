@@ -1,105 +1,91 @@
-
 .bgBody {
-
-    height: 100px;
-    background: #CCFFFF; /* For browsers that do not support gradients */
-
-
+	height: 100px;
+	background: #CCFFFF; /* For browsers that do not support gradients */
 }
 
+<<<<<<< HEAD
 
 #logoTopo{
 	width:212px;
 	height:49px;
+=======
+#logoTopo {
+	width: 212px;
+	height: 49px;
+>>>>>>> branch 'master' of https://github.com/diegooph/weeping
 }
 
-#imgOption{
-	
+#imgOption {
 	width: 40px;
 	height: 40px;
-	
 }
 
-img{
-	
-width:140px;
-height:140px;	
-	
+img {
+	width: 140px;
+	height: 140px;
 }
 
 div[id="panel:listaMensagem"] .ui-widget-content {
 	background-color: transparent;
-	}
-
-
-.config_box{
-	border: 2px;
-		
 }
 
+.config_box {
+	border: 2px;
+}
 
-.fieldsetPrincipal{
-
-  	-webkit-box-sizing: border-box;
-  	-moz-box-sizing: border-box;
-  	box-sizing: border-box;  
-  	border: none;  
-    border-radius: 10px 0px 0px 70%;
-    margin-bottom: 10px;
+.fieldsetPrincipal {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border: none;
+	border-radius: 10px 0px 0px 70%;
+	margin-bottom: 10px;
 	background-color: #E6ECF0;
-    
 }
 
 .textoprincipal {
-    resize: none;
-    border: none;
+	resize: none;
+	border: none;
 	border-radius: 0px 0px 0px 50px;
 	background-color: #F5F8FA;
 }
 
-.postagens{
+.postagens {
 	background-color: #F5F8FA;
 	margin-bottom: 17px;
-
 }
 
 .postagens li:hover {
-  display: block;
+	display: block;
 }
 
-.fieldsetMensagens{
-	
-background-color: #F5F8FA;	
-	
+.fieldsetMensagens {
+	background-color: #F5F8FA;
 }
 
 /*Mantem as postagens alinhadas*/
-.teste{
-    width: 45em; 
-    display: block;
-    overflow-wrap: break-word;
-  	word-wrap: break-word;
-  	hyphens: auto;  	
-	
+.teste {
+	width: 45em;
+	display: block;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	hyphens: auto;
 }
 
-.logo{
-	
-	 height: 100px;
-    width: 100px;
+.logo {
+	height: 100px;
+	width: 100px;
 }
-
 
 .divUserContentBox {
-    background-color: #7e8d89;
-    
+	background-color: #7e8d89;
 }
-.ui-carousel .ui-carousel-header .ui-carousel-header-title{
-	
+
+.ui-carousel .ui-carousel-header .ui-carousel-header-title {
 	display: inline-block;
-    width:100% ;
-    padding-top: 2px;
-    overflow: hidden;
+	width: 100%;
+	padding-top: 2px;
+	overflow: hidden;
 }
 
 /*Botão Config */
@@ -138,255 +124,253 @@ background-color: #F5F8FA;
 
 /*Botão post 01*/
 .chorar {
-
-    float: right;
-    text-align: center;
-
+	float: right;
+	text-align: center;
 }
 
-
 .buttonPost {
-    float: right;
-    background-color: #00f48d;
-    border: none;
-    border-radius: 10px 20px 900px;
-    
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 18px;
-    padding: 1px;
-    width: 150px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
+	float: right;
+	background-color: #00f48d;
+	border: none;
+	border-radius: 10px 20px 900px;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 18px;
+	padding: 1px;
+	width: 150px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
 }
 
 .buttonPost span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
 }
 
 .buttonPost span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
 }
 
 .buttonPost:hover span {
-    padding-right: 25px;
+	padding-right: 25px;
 }
 
 .buttonPost:hover span:after {
-    opacity: 1;
-    right: 0;
+	opacity: 1;
+	right: 0;
 }
 
 /*Botão post 01*/
 .buttonCancel {
-    float: right;
-    background-color: #f4746d;
-    border: none;
-    border-radius: 60px 10px 20px 900px;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 18px;
-    padding: 1px;
-    width: 150px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
+	float: right;
+	background-color: #f4746d;
+	border: none;
+	border-radius: 60px 10px 20px 900px;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 18px;
+	padding: 1px;
+	width: 150px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
 }
 
 .buttonCancel span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
 }
 
 .buttonCancel span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
 }
 
 .buttonCancel:hover span {
-    padding-right: 25px;
+	padding-right: 25px;
 }
 
 .buttonCancel:hover span:after {
-    opacity: 1;
-    right: 0;
+	opacity: 1;
+	right: 0;
 }
 
 /* CARD USUARIO */
 .card.hovercardp {
-    position: relative;
-    padding-top: 0;
-    overflow: hidden;
-    text-align: center;
-    background: #CCFFFF;
-    background: linear-gradient(180deg, #ccffec, #faf8ff, #dffff8); /* Degradê */
-
+	position: relative;
+	padding-top: 0;
+	overflow: hidden;
+	text-align: center;
+	background: #CCFFFF;
+	background: linear-gradient(180deg, #ccffec, #faf8ff, #dffff8);
+	/* Degradê */
 }
 
 .card.hovercardp .cardheaderp {
-    background: url("https://www.walldevil.com/wallpapers/a70/alexandra-background-web-beautiful-wallpapers.jpg");
-    background-size: cover;
-    height: 135px;
-
+	background:
+		url("https://www.walldevil.com/wallpapers/a70/alexandra-background-web-beautiful-wallpapers.jpg");
+	background-size: cover;
+	height: 135px;
 }
 
 .card.hovercardp .avatar {
-    position: relative;
-    top: -50px;
-    margin-bottom: -50px;
-    padding: 0px 90px;
-
-}
-
-.card.hovercardp .avatar img {
-
-    height: 100px;
-	width: 100px;
-
-    border: 3px solid rgba(255, 255, 255, 0.5);
+	position: relative;
+	top: -50px;
+	margin-bottom: -50px;
+	padding: 0px 90px;
 }
 
 /* Use este alinhamento para textos dentro de texarea */
 .alinhamentoDeTexto {
-
-    text-align: center;
-
+	text-align: center;
 }
 /*Tamanho padrao para avisos dentro do site*/
-.textoPequeno{
-
-font-size: 12px;
-
+.textoPequeno {
+	font-size: 12px;
 }
 
 /*so para nao ficar repetindo codigo fiz esses floats*/
-.textoNaDireita{
-
-    float: right;
-}
-.textoNaEsquerda{
-
-    float: left;
+.textoNaDireita {
+	float: right;
 }
 
-
+.textoNaEsquerda {
+	float: left;
+}
 
 .card.hovercardp .infop {
-    padding: 4px 8px 10px;
-
+	padding: 4px 8px 10px;
+	padding-top: 100px;
 }
 
-.selectedbox{
-	
-width:100px;
-height:100px;
-position:absolute;
-top:50%;
-left:50%;
+.avatar img {
+	height: 100px;
+	width: 100px;
+	border: 3px solid rgba(255, 255, 255, 0.5);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -50px;
+}
 
-	
+.selectedbox {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+.ui-carousel .ui-carousel-viewport .ui-carousel-items .ui-carousel-item
+	{
+	padding: 3px;
 }
 
 .card.hovercardp .infop .titlep {
-    margin-bottom: 4px;
-    font-size: 24px;
-    line-height: 1;
-    color: #262626;
-    vertical-align: middle;
-
+	margin-bottom: 4px;
+	font-size: 24px;
+	line-height: 1;
+	color: #262626;
+	vertical-align: middle;
 }
 
 .card.hovercardp .infop .descp {
-    overflow: hidden;
-    font-size: 12px;
-    line-height: 20px;
-    color: #737373;
-    text-overflow: ellipsis;
-
+	overflow: hidden;
+	font-size: 12px;
+	line-height: 20px;
+	color: #737373;
+	text-overflow: ellipsis;
+}
+.textUser{
+	color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
 }
 
+.ui-dialog{
+	
+}
+td.label {
+    text-align: center;
+    font-size: x-large;
+}
 .card.hovercardp .bottom {
-    padding: 0 20px;
-    margin-bottom: 17px;
-
+	padding: 0 20px;
+	margin-bottom: 17px;
 }
 
 .liIndex {
-    align-items: center;
-    text-align: center;
-
+	align-items: center;
+	text-align: center;
 }
 
 .row {
-    padding-top: 100px;
+	padding-top: 100px;
 }
 
 .riscar {
-    text-decoration: line-through;
+	text-decoration: line-through;
 }
 
 /*Codigo da Index Nao alterar por favor*/
-
 header {
-    background: url(https://i.pinimg.com/originals/07/62/4a/07624a94d0b3cba2b291977fb4da87c8.jpg) no-repeat;
-    background-size: 100% 100%;
-
+	background:
+		url(https://i.pinimg.com/originals/07/62/4a/07624a94d0b3cba2b291977fb4da87c8.jpg)
+		no-repeat;
+	background-size: 100% 100%;
 }
 
 .header {
-    width: 100%;
-    height: 100%;
-    min-height: 100%;
-    background: rgba(0, 0, 0, 0.7) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAYAAACddGYaAAAAD0lEQVQIW2NkQABjRmQOAAM+AGkQsDBSAAAAAElFTkSuQmCC) repeat;
-    -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
-    box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
-
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	background: rgba(0, 0, 0, 0.7)
+		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAYAAACddGYaAAAAD0lEQVQIW2NkQABjRmQOAAM+AGkQsDBSAAAAAElFTkSuQmCC)
+		repeat;
+	-webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+	box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
 }
 
 .buttonIni1 {
-    float: right;
-    background-color: #00f48d;
-    border: none;
-    border-radius: 10px 20px 900px;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 18px;
-    padding: 1px;
-    width: 150px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
+	float: right;
+	background-color: #00f48d;
+	border: none;
+	border-radius: 10px 20px 900px;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 18px;
+	padding: 1px;
+	width: 150px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
 }
-
-
 
 .buttonIni2 {
-    float: left;
-    background-color: #78e4f4;
-    border: none;
-    border-radius: 60px 10px 20px 900px;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 18px;
-    padding: 1px;
-    width: 150px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
+	float: left;
+	background-color: #78e4f4;
+	border: none;
+	border-radius: 60px 10px 20px 900px;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 18px;
+	padding: 1px;
+	width: 150px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
 }
-
