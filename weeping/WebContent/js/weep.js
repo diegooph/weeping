@@ -74,6 +74,18 @@ function limpar() {
 }
 
 
+
+
+
+function showMenu(){
+	
+	document.getElementById(theId).style.display='block';
+	document.getElementById(theId).style.display='none';
+	
+	
+}
+
+
 //Fim verificação para campo texto.
 
 //validação de campos cadastro 1º
